@@ -1,0 +1,9 @@
+# Configuración de versión para yeste-studio-theme
+TYPE="repo"
+PKG_NAME="yeste-studio-theme"
+TEST_COMMAND=""
+PUBLISH_PLATFORM="GitHub"
+# El tema no usa versionado semver — su consumo es vía `remote_theme:` que
+# resuelve la última versión publicada en el branch. Sin tags, sin commits
+# automáticos en publish; sólo git push de lo que hayas committeado a mano.
+TAG_ON_PUBLISH=false
