@@ -1,0 +1,357 @@
+/*!------------------------------------------------------------------
+[MAIN STYLESHEET]
+-------------------------------------------------------------------*/
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+:: MusaDSL Website
+:: Based on Clancy theme by Artem Sheludko
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+@import '0-settings/variables';
+@import '0-settings/color-scheme';
+@import '0-settings/mixins';
+@import '0-settings/helpers';
+
+
+/* =======================
+:: 1-Tools and Libs
+======================= */
+@import '1-tools/normalize';
+@import '1-tools/reset';
+@import '1-tools/shared';
+@import '1-tools/syntax-highlighting';
+@import '1-tools/grid';
+
+
+/* =======================
+:: 2-Base Styles
+======================= */
+@import '2-base/base';
+
+
+/* =======================
+:: 3-Modules
+======================= */
+@import '3-modules/scroll-button-top';
+@import '3-modules/header';
+@import '3-modules/footer';
+@import '3-modules/sections';
+
+
+/* =======================
+:: Custom Styles for MusaDSL
+======================= */
+
+/* Hero Section */
+.hero-section {
+  padding: 80px 0 60px;
+  text-align: center;
+
+  .hero__title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .hero__subtitle {
+    font-size: 1.4rem;
+    color: var(--heading-font-color);
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
+
+  .hero__meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: var(--text-color);
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      ion-icon {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .hero__image {
+    margin-top: 2.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+/* Content Sections */
+.content-section {
+  padding: 60px 0;
+
+  &:nth-child(even) {
+    background-color: var(--background-alt-color);
+  }
+
+  .section__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: transparent;
+    padding: 0;
+  }
+
+  .section__content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/* Component Cards */
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.component-card {
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &--featured {
+    grid-column: 1 / -1;
+  }
+
+  .component__image {
+    margin-bottom: 1.25rem;
+    border-radius: 6px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .component__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--heading-font-color);
+  }
+
+  .component__description {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .component__links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+      color: var(--link-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      ion-icon {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+/* Component Category */
+.component-category {
+  margin-bottom: 3rem;
+
+  .category__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--brand-color);
+  }
+}
+
+/* MIDI Libraries Table */
+.libraries-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    font-weight: 700;
+    background: var(--background-alt-color);
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+
+    th, td {
+      padding: 0.5rem;
+    }
+  }
+}
+
+/* Getting Started */
+.getting-started {
+  .requirements {
+    background: var(--background-alt-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .install-steps {
+    h3 {
+      padding-bottom: 0.4rem;
+      margin-top: 2rem;
+      border-bottom: 2px solid var(--brand-color);
+    }
+
+    code {
+      background: var(--background-alt-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      background: var(--background-alt-color);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+
+      code {
+        background: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* Author Section */
+.author-section {
+  text-align: center;
+
+  .author__info {
+    max-width: 600px;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* License Badge */
+.license-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-color);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Anchor offset for fixed header */
+:target::before {
+  content: "";
+  display: block;
+  height: 80px;
+  margin-top: -80px;
+}

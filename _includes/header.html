@@ -1,0 +1,56 @@
+<!-- begin header -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="header__inner col col-12">
+
+        <div class="logo">
+          <a class="logo__link" href="{{ site.baseurl }}/">
+          {% if site.data.settings.logo %}
+            <img class="logo__image" src="{{ site.baseurl }}{{ site.data.settings.logo }}" alt="{{ site.data.settings.title }}">
+          {% else %}
+            {{ site.data.settings.title }}
+          {% endif %}
+          </a>
+        </div>
+
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <div class="nav__icon-close">
+              <ion-icon name="close"></ion-icon>
+            </div>
+            <div class="nav__title">Menu</div>
+            <ul class="nav__list list-reset">
+              {% for item in site.data.settings.menu__settings.menu__items %}
+                <li class="nav__item">
+                  {% if item.external %}
+                    <a href="{{ item.url }}" class="nav__link" target="_blank" rel="noopener">
+                      {{ item.title }}
+                      <ion-icon name="open-outline" style="font-size: 0.8em; margin-left: 4px;"></ion-icon>
+                    </a>
+                  {% else %}
+                    <a href="{{ item.url }}" class="nav__link{% if page.url == item.url %} nav__link--current{% endif %}">
+                      {{ item.title }}
+                    </a>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              <li class="nav__item">
+                <div class="toggle-theme">
+                  <div class="toggle-moon" title="Enable dark mode"><ion-icon name="moon"></ion-icon></div>
+                  <div class="toggle-sun" title="Enable light mode"><ion-icon name="sunny"></ion-icon></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="nav-button">
+          <ion-icon name="menu" class="nav__icon nav__icon-menu"></ion-icon>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end header -->

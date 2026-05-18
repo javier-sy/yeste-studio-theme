@@ -1,0 +1,36 @@
+<!-- begin footer -->
+<footer class="footer">
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+
+        <div class="footer__inner">
+          {% if site.data.settings.social %}
+            <div class="social">
+              <ul class="social__list list-reset">
+                {% for social in site.data.settings.social %}
+                  <li class="social__item">
+                    <a class="social__link" href="{{social.link}}" target="_blank" rel="noopener" aria-label="{{social.label}} link"><ion-icon name="{{social.icon}}" style="color: {{social.color}};"></ion-icon> {{social.label}}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="footer__info">
+          <div class="copyright">&copy; 2024-{{site.time | date: '%Y'}} <a href="/">{{site.data.settings.title}}</a> | <a href="https://yeste.studio" target="_blank" rel="noopener">yeste.studio</a>. All rights reserved.</div>
+          <div class="legal">&nbsp;</div>
+          <div class="legal">
+            <a href="/condiciones-de-uso">condiciones de uso</a>&nbsp;&nbsp;
+            <a href="/politica-de-privacidad">politica de privacidad</a>&nbsp;&nbsp;
+            <a href="/politica-de-cookies">politica de cookies</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</footer>
+<!-- end footer -->
