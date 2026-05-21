@@ -53,7 +53,7 @@ That is the entire integration. The consumer site can:
 - [musalce-website](https://github.com/javier-sy/musalce-website) → `musalce.yeste.studio` (MusaLCE live coding suite)
 - [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code)
 
-Future: `pulso-website`, plugin VST3 sites, etc.
+Future: `pulso-website`, etc.
 
 ## Development
 
