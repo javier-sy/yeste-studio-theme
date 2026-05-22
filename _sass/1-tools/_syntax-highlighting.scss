@@ -69,3 +69,16 @@
   .vi    { color: #008080 } // Name.Variable.Instance
   .il    { color: #099 } // Literal.Number.Integer.Long
 }
+
+// Reset the <figure class="highlight"> wrapper Rouge adds around code blocks
+// rendered via the Liquid {% highlight %} tag. The inner <pre> provides
+// background/spacing (from .feature-block__body or .install-steps); the
+// figure would otherwise add a default browser margin and a second background.
+figure.highlight {
+  margin: 0;
+  background: none;
+
+  pre {
+    margin: 1rem 0;
+  }
+}
