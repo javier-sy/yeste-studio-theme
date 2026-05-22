@@ -1,0 +1,27 @@
+{%- assign product = include.product -%}
+{%- assign license = include.license | default: "LGPL 3.0 License" -%}
+{%- assign github = include.github | default: "https://github.com/javier-sy" -%}
+{%- assign family = include.family | default: false -%}
+
+<section id="author" class="content-section author-section">
+  <div class="container">
+    <h2 class="section__title">Author</h2>
+    <div class="author__info">
+      <p>
+        {{ product }} is created and maintained by
+        <a href="https://yeste.studio" target="_blank" rel="noopener">yeste.studio</a>,
+        exploring the intersection of sound, music, technology, and algorithmic composition.{% if family %}
+        It is part of the <a href="https://musadsl.yeste.studio">MusaDSL</a> family of projects.{% endif %}
+      </p>
+      <p style="margin-top: 1.5rem;">
+        <span class="license-badge">
+          <ion-icon name="scale-outline"></ion-icon>
+          {{ license }}
+        </span>
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.95rem;">
+        Source code on <a href="{{ github }}" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </div>
+  </div>
+</section>
