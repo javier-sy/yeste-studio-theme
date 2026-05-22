@@ -205,6 +205,73 @@
   }
 }
 
+/* Feature Blocks
+   Vertical stack of labeled blocks with prominent heading + body. Use when
+   the semantic hierarchy of a section needs visual structure (e.g. parallel
+   options or sub-concepts within an About / Detail section). Reusable across
+   consumer sites.
+
+   Markup:
+       <div class="feature-blocks">
+         <div class="feature-block">
+           <h3 class="feature-block__title">
+             <ion-icon name="…"></ion-icon> Title
+           </h3>
+           <div class="feature-block__body">
+             <p>…</p>
+           </div>
+         </div>
+         …
+       </div>
+*/
+.feature-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.feature-block {
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--brand-color);
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+
+  .feature-block__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--heading-font-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+
+    ion-icon {
+      font-size: 1.4rem;
+      color: var(--brand-color);
+      flex-shrink: 0;
+    }
+  }
+
+  .feature-block__body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+
+    p {
+      margin: 0 0 1rem 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
 /* Component Category */
 .component-category {
   margin-bottom: 3rem;
