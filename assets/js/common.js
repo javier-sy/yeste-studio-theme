@@ -127,6 +127,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   /* =======================
+  // Tabs (e.g. multi-harness install instructions)
+  // Markup: <div class="tabs"> with .tab-triggers > .tab-trigger[data-tab]
+  // and .tab-panel#tab-<id>. Activates the first panel by default.
+  ======================= */
+  document.querySelectorAll(".tabs").forEach(function (tabsRoot) {
+    var triggers = tabsRoot.querySelectorAll(".tab-trigger");
+    var panels = tabsRoot.querySelectorAll(".tab-panel");
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener("click", function () {
+        var target = trigger.getAttribute("data-tab");
+        triggers.forEach(function (t) { t.classList.remove("is-active"); });
+        panels.forEach(function (p) { p.classList.remove("is-active"); });
+        trigger.classList.add("is-active");
+        var panel = tabsRoot.querySelector("#tab-" + target);
+        if (panel) panel.classList.add("is-active");
+      });
+    });
+  });
+
+
+  /* =======================
   // Scroll Top Button
   ======================= */
   window.addEventListener("scroll", function () {

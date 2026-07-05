@@ -51,7 +51,7 @@ That is the entire integration. The consumer site can:
 - [yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) → `yeste.studio` (artist umbrella)
 - [musadsl-website](https://github.com/javier-sy/musadsl-website) → `musadsl.yeste.studio` (the MusaDSL framework)
 - [musalce-website](https://github.com/javier-sy/musalce-website) → `musalce.yeste.studio` (MusaLCE live coding suite)
-- [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code)
+- [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code and opencode)
 
 Future: `pulso-website`, etc.
 

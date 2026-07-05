@@ -1,0 +1,56 @@
+/* Tabs — lightweight, accessible toggle for parallel content blocks
+   (e.g. multi-harness install instructions in nota-website). */
+
+.tabs {
+  margin-top: 24px;
+}
+
+.tab-triggers {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.tab-trigger {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 10px 20px;
+  font-family: $heading-font-family;
+  font-size: 16px;
+  font-weight: $heading-font-weight;
+  letter-spacing: 0.5px;
+  color: var(--text-alt-color);
+  cursor: pointer;
+  transition: color $global-transition, border-color $global-transition;
+
+  &:hover {
+    color: var(--text-color);
+  }
+
+  &.is-active {
+    color: var(--brand-color);
+    border-bottom-color: var(--brand-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 2px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+.tab-panel {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
