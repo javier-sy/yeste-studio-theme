@@ -1,0 +1,30 @@
+/* Notice — a set-aside block for something the reader has to know before
+   acting on the surrounding text (a channel on hold, a caveat, a deprecation).
+   Not for emphasis: if the text merely matters, write it as prose. */
+
+.notice {
+  margin: 24px 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--brand-color);
+  border-radius: 0 $global-radius $global-radius 0;
+  background-color: var(--background-alt-color);
+  color: var(--text-color);
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.notice__title {
+  display: block;
+  margin-bottom: 8px;
+  font-family: $heading-font-family;
+  font-size: 16px;
+  font-weight: $heading-font-weight;
+  letter-spacing: 0.5px;
+  color: var(--heading-font-color);
+}
