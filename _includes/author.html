@@ -1,6 +1,7 @@
 {%- assign product = include.product -%}
 {%- assign license = include.license | default: "LGPL 3.0 License" -%}
 {%- assign github = include.github | default: "https://github.com/javier-sy" -%}
+{%- assign github_label = include.github_label | default: "Source code on" -%}
 {%- assign family = include.family | default: false -%}
 
 <section id="author" class="content-section author-section">
@@ -20,7 +21,7 @@
         </span>
       </p>
       <p style="margin-top: 1rem; font-size: 0.95rem;">
-        Source code on <a href="{{ github }}" target="_blank" rel="noopener">GitHub</a>.
+        {{ github_label }} <a href="{{ github }}" target="_blank" rel="noopener">GitHub</a>.
       </p>
     </div>
   </div>
