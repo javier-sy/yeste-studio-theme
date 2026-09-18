@@ -13,8 +13,11 @@
   }
 }
 
-/* Logo */
+/* Logo: the brand mark next to the product name, both in the heading colour */
 .logo__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 4px 0;
   font-family: $heading-font-family;
   font-size: 36px;
@@ -30,11 +33,19 @@
 
   @media only screen and (max-width: $mobile) {
     font-size: 32px;
+    gap: 10px;
   }
 }
 
-.logo__image {
-  max-height: 50px;
+.brand-mark {
+  display: block;
+  height: 44px;
+  width: auto;
+  flex-shrink: 0;
+
+  @media only screen and (max-width: $mobile) {
+    height: 38px;
+  }
 }
 
 /* Nav */
@@ -78,7 +89,7 @@
           }
 
           &.nav__link--current {
-            color: var(--brand-color);
+            color: var(--brand-color-text);
 
             &::after {
               content: none;
@@ -375,12 +386,12 @@
   transition: all 0.25s ease;
 
   &:hover {
-    color: var(--brand-color);
+    color: var(--brand-color-text);
     background: var(--background-color);
   }
 
   &.submenu__link--current {
-    color: var(--brand-color);
+    color: var(--brand-color-text);
   }
 
   @media only screen and (max-width: $desktop) {

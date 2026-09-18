@@ -27,8 +27,12 @@ That is the entire integration. The consumer site can:
 |---|---|
 | `_layouts/default.html` | Top-level page wrapper (head + header + content + footer) |
 | `_layouts/page.html` | Standard content page layout |
-| `_includes/head.html` | `<head>` element with meta tags + favicon + CSS link |
-| `_includes/header.html` | Site header with logo + nav (reads `site.data.settings.menu__settings.menu__items`) |
+| `_includes/head.html` | `<head>` element with meta tags, brand favicons, CSS link; `noindex: true` in a page's front matter adds `<meta name="robots" content="noindex">` |
+| `_includes/header.html` | Site header with the brand mark + site title + nav (reads `site.data.settings.menu__settings.menu__items`) |
+| `_includes/author.html` | "Author" section with the brand lockup |
+| `_includes/brand/` | Inline SVGs of the yeste.studio mark and lockup, in `currentColor` |
+| `assets/brand/` | Favicon set (ico, svg, png) and home-screen icons |
+| `scripts/sync-brand.sh` | Regenerates `_includes/brand/`, `assets/brand/` and yeste-studio-website's copies from the brand masters in `../../../Resources` (the single source of truth). Never edit those outputs by hand |
 | `_includes/footer.html` | Site footer with social links + legal links |
 | `_includes/main.scss` | SCSS entry point — imports the four `_sass` categories |
 | `_sass/0-settings/` | Variables, helpers, color scheme, mixins |
@@ -43,15 +47,16 @@ That is the entire integration. The consumer site can:
 - `index.html` (or `index.md`) with the site's actual content.
 - `_data/settings.yml` with the per-site navigation menu and contact info.
 - `CNAME` with the subdomain.
-- Site-specific images (logos, product screenshots).
+- Site-specific images (product screenshots). The brand itself comes with the theme.
 - Product-specific layouts when needed (e.g. yeste-studio-website ships `_layouts/works.html` and `_layouts/music.html` locally).
 
 ## Consumers (as of 2026-05-18)
 
-- [yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) → `yeste.studio` (artist umbrella)
 - [musadsl-website](https://github.com/javier-sy/musadsl-website) → `musadsl.yeste.studio` (the MusaDSL framework)
 - [musalce-website](https://github.com/javier-sy/musalce-website) → `musalce.yeste.studio` (MusaLCE live coding suite)
 - [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code and opencode)
+
+[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh`.
 
 Future: `pulso-website`, etc.
 

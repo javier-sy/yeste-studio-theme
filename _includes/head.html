@@ -7,6 +7,14 @@
   <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.settings.description }}{% endif %}'>
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  {%- if page.noindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+
+  <!-- Brand icons: refreshed by scripts/sync-brand.sh from the brand masters -->
+  <link rel="icon" href="{{ '/assets/brand/favicon.ico' | relative_url }}" sizes="32x32">
+  <link rel="icon" href="{{ '/assets/brand/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/assets/brand/apple-touch-icon.png' | relative_url }}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">

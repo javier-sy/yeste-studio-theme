@@ -1,7 +1,8 @@
 /* Color Scheme */
 
 :root {
-  --brand-color: #5e3aee;
+  --brand-color: #279b44;
+  --brand-color-text: #218339; /* brand hue, dark enough to read on light backgrounds (4.8:1 on white) */
   --white: #fff;
   --light-gray: #f0f0f0;
   --light-blue: #f8f6fb;
@@ -18,12 +19,12 @@
 
   --heading-font-color: var(--dark-blue);
 
-  --link-color: #1a73e8;
-  --link-color-hover: #1557b0;
+  --link-color: var(--text-color);
+  --link-color-hover: var(--brand-color-text);
 
-  --button-color: var(--white);
+  --button-color: var(--dark-blue);
   --button-background-color: var(--brand-color);
-  --button-background-hover: #4f31c7;
+  --button-background-hover: #207e37;
 
   --border-color: var(--light-blue);
   --border-color-alt: var(--light-blue);
@@ -35,7 +36,8 @@
 }
 
 :root[dark] {
-  --brand-color: #5e3aee;
+  --brand-color: #279b44;
+  --brand-color-text: var(--brand-color); /* 5.3:1 on the dark background */
   --white: #fff;
   --light-gray: #f0f0f0;
   --gray: #9e9e9e;
@@ -49,12 +51,12 @@
 
   --heading-font-color: var(--light-gray);
 
-  --link-color: #58a6ff;
-  --link-color-hover: #79b8ff;
+  --link-color: var(--text-color);
+  --link-color-hover: var(--brand-color-text);
 
-  --button-color: var(--white);
+  --button-color: var(--dark);
   --button-background-color: var(--brand-color);
-  --button-background-hover: #4f31c7;
+  --button-background-hover: #207e37;
 
   --border-color: #252629;
   --border-color-alt: #080b12;

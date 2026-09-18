@@ -32,12 +32,12 @@
   }
 
   &.is-active {
-    color: var(--brand-color);
+    color: var(--brand-color-text);
     border-bottom-color: var(--brand-color);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--brand-color);
+    outline: 2px solid var(--brand-color-text);
     outline-offset: 2px;
   }
 

@@ -24,3 +24,17 @@
   width: 1px;
   word-wrap: normal !important;
 }
+
+// Link inside running text: the text keeps its colour, the underline carries
+// the brand colour; on hover the text takes the brand hue too
+@mixin text-link() {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--brand-color);
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+}

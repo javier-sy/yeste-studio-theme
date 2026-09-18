@@ -127,6 +127,12 @@
     margin: 0 auto;
     line-height: 1.7;
 
+    p a,
+    li a,
+    td a {
+      @include text-link;
+    }
+
     p {
       margin-bottom: 1rem;
     }
@@ -254,7 +260,7 @@
 
     ion-icon {
       font-size: 1.4rem;
-      color: var(--brand-color);
+      color: var(--brand-color-text);
       flex-shrink: 0;
     }
   }
@@ -329,12 +335,7 @@
   }
 
   a {
-    color: var(--link-color);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    @include text-link;
   }
 
   @media (max-width: 600px) {
@@ -412,13 +413,21 @@
     }
 
     a {
-      color: var(--link-color);
-      text-decoration: none;
+      @include text-link;
       font-weight: 500;
+    }
 
-      &:hover {
-        text-decoration: underline;
-      }
+    .author__brand {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--heading-font-color);
+      text-decoration: none;
+    }
+
+    .brand-lockup {
+      display: block;
+      height: 56px;
+      width: auto;
     }
   }
 }

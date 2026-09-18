@@ -17,7 +17,7 @@ body {
 }
 
 *::selection {
-  color: var(--white);
+  color: var(--dark);
   background-color: var(--brand-color);
 }
 
@@ -214,7 +214,7 @@ table td {
   background: var(--background-alt-color);
 
   &--primary {
-    color: var(--white);
+    color: var(--button-color);
     background-color: var(--button-background-color);
 
     &:hover {
