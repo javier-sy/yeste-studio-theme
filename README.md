@@ -28,9 +28,9 @@ That is the entire integration. The consumer site can:
 | `_layouts/default.html` | Top-level page wrapper (head + header + content + footer) |
 | `_layouts/page.html` | Standard content page layout |
 | `_includes/head.html` | `<head>` element with meta tags, brand favicons, CSS link; `noindex: true` in a page's front matter adds `<meta name="robots" content="noindex">` |
-| `_includes/header.html` | Site header with the brand mark + site title + nav (reads `site.data.settings.menu__settings.menu__items`) |
+| `_includes/header.html` | Site header with the product lockup + nav. The lockup is `_includes/brand/lockup-<title>.svg`, picked by the site's `title` in `_data/settings.yml` lowercased (`MusaDSL` → `lockup-musadsl.svg`); the nav reads `menu__settings.menu__items` |
 | `_includes/author.html` | "Author" section with the brand lockup |
-| `_includes/brand/` | Inline SVGs of the yeste.studio mark and lockup, in `currentColor` |
+| `_includes/brand/` | Inline SVGs in `currentColor`: the yeste.studio mark and lockup, and one product lockup per site (name, "by yeste.studio") |
 | `assets/brand/` | Favicon set (ico, svg, png) and home-screen icons |
 | `scripts/sync-brand.sh` | Regenerates `_includes/brand/`, `assets/brand/` and yeste-studio-website's copies from the brand masters in `../../../Resources` (the single source of truth). Never edit those outputs by hand |
 | `_includes/footer.html` | Site footer with social links + legal links |

@@ -6,8 +6,8 @@
 
         <div class="logo">
           <a class="logo__link" href="{{ site.baseurl }}/">
-            {% include brand/mark.svg %}
-            <span class="logo__title">{{ site.data.settings.title }}</span>
+            {%- capture lockup %}brand/lockup-{{ site.data.settings.title | downcase }}.svg{% endcapture -%}
+            {% include {{ lockup }} %}
           </a>
         </div>
 

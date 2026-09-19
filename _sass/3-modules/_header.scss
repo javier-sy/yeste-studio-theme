@@ -13,38 +13,31 @@
   }
 }
 
-/* Logo: the brand mark next to the product name, both in the heading colour */
+/* Logo: the product lockup (mark, name, "by yeste.studio"), in the heading colour.
+   The name's second part (DSL, LCE) identifies the product, so it takes the page's
+   secondary text colour rather than the masters' fixed grey; the signature keeps it. */
 .logo__link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
   padding: 4px 0;
-  font-family: $heading-font-family;
-  font-size: 36px;
-  letter-spacing: -1px;
-  line-height: 1;
-  font-weight: 700;
-  transition: none;
   color: var(--heading-font-color);
+  transition: none;
 
   &:hover {
     color: var(--heading-font-color);
   }
 
-  @media only screen and (max-width: $mobile) {
-    font-size: 32px;
-    gap: 10px;
+  .brand-lockup {
+    display: block;
+    height: 62px;
+    width: auto;
+
+    @media only screen and (max-width: $mobile) {
+      height: 48px;
+    }
   }
-}
 
-.brand-mark {
-  display: block;
-  height: 44px;
-  width: auto;
-  flex-shrink: 0;
-
-  @media only screen and (max-width: $mobile) {
-    height: 38px;
+  .suffix {
+    fill: var(--text-alt-color);
   }
 }
 

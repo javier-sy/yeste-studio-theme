@@ -61,10 +61,15 @@ icon_set() {  # <dir>
   cp "$SRC/png/yeste-mark--dark-on-transparent--512.png" "$d/android-chrome-512x512.png"
 }
 
-# --- theme: header mark, author lockup, icons under assets/brand/
+# --- theme: product lockups for the header (one per site, picked by the site's title),
+#     studio mark and lockup (author section), icons under assets/brand/
 mkdir -p "$THEME/_includes/brand" "$THEME/assets/brand"
 inline_svg "$SRC/svg/yeste-mark--dark-on-transparent.svg"   "$THEME/_includes/brand/mark.svg"   brand-mark   "yeste.studio"
 inline_svg "$SRC/svg/yeste-lockup--dark-on-transparent.svg" "$THEME/_includes/brand/lockup.svg" brand-lockup "yeste.studio"
+for product in MusaDSL MusaLCE Nota; do
+  slug="$(echo "$product" | tr '[:upper:]' '[:lower:]')"
+  inline_svg "$SRC/svg/$slug-lockup--dark-on-transparent.svg" "$THEME/_includes/brand/lockup-$slug.svg" brand-lockup "$product by yeste.studio"
+done
 icon_set "$THEME/assets/brand"
 
 # --- yeste-studio-website: header lockup, icons at the site root
