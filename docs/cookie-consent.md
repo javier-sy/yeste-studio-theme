@@ -15,6 +15,11 @@ theme) and to yeste-studio-website (through copies kept in sync by `scripts/sync
 | Switch | `_data/settings.yml` → `google-analytics` | The GA4 measurement ID. Without it the site has no banner, no analytics and no footer link: nothing to consent to |
 | Revoke link | `_includes/footer.html` → *configurar cookies* | Reopens the banner |
 
+Consumer sites must build with Jekyll 4: Jekyll 3 (what the `github-pages` gem pins) does not
+read a theme's `_data/`, so `site.data.cookies` arrives empty, the inline `version` breaks the
+loader (no banner, no analytics: it fails closed) and the policy table has no rows. Seen on
+musalce and nota on 2026-09-20.
+
 All four sites report to the same GA4 property (one measurement ID); GA tells them apart by
 `hostname`.
 

@@ -15,7 +15,7 @@ plugins:
   - jekyll-remote-theme
 ```
 
-That is the entire integration. The consumer site can:
+That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll', '~> 4.3'`, as in musadsl-website's Gemfile), because the theme ships `_data/` that Jekyll 3 does not read. The `github-pages` gem pins Jekyll 3.10 and must not be used; the sites build with their own GitHub Actions workflow anyway. The consumer site can:
 
 - Use the theme's `default` and `page` layouts out of the box (declare `layout: default` or `layout: page` in front matter).
 - Override any theme layout, include, sass file or JS by providing the same file at the same path locally — Jekyll's lookup prefers the local file over the theme.
