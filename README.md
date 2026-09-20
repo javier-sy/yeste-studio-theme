@@ -37,6 +37,9 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 | `_includes/cookie-consent.html`, `assets/js/consent.js`, `_sass/3-modules/_cookie-consent.scss` | Consent bar for Google Analytics: nothing from Google loads until the visitor accepts. Active only when `_data/settings.yml` has `google-analytics: G-…`. See `docs/cookie-consent.md` |
 | `_data/cookies.yml`, `_includes/cookies-table.html` | The cookie register and the table it renders inside each site's `politica-de-cookies.md` |
 | `scripts/sync-consent.sh` | Copies the consent pieces to yeste-studio-website, which shares the banner without using the theme |
+| `assets/fonts/`, `_sass/0-settings/_fonts.scss` | Self-hosted DM Sans and Josefin Sans (OFL), the same subsets Google Fonts served; no page contacts Google for them |
+| `assets/vendor/ionicons/` | Ionicons 7.1.0 (MIT), served from the site instead of a CDN. The `<ion-icon>` component fetches `svg/<name>.svg` next to its script, so the whole folder ships |
+| `scripts/sync-vendor.sh` | Copies fonts, the fonts partial and Ionicons to yeste-studio-website |
 | `_includes/main.scss` | SCSS entry point — imports the four `_sass` categories |
 | `_sass/0-settings/` | Variables, helpers, color scheme, mixins |
 | `_sass/1-tools/` | Reset, normalize, grid, syntax highlighting |
@@ -59,7 +62,7 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 - [musalce-website](https://github.com/javier-sy/musalce-website) → `musalce.yeste.studio` (MusaLCE live coding suite)
 - [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code and opencode)
 
-[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh` and the cookie-consent pieces through `scripts/sync-consent.sh`.
+[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh`, the cookie-consent pieces through `scripts/sync-consent.sh` and the self-hosted fonts and icons through `scripts/sync-vendor.sh`.
 
 Future: `pulso-website`, etc.
 

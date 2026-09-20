@@ -71,6 +71,13 @@ analytics cookie set, no advertising, no walls, no forms, no minors.
 | 9 | No deceptive design: no pre-ticked options, colours or wording that push to accept | Compare the two buttons; read the copy |
 | 10 | Exempt storage is disclosed but not asked for | `theme` (and `classView` on yeste.studio) and `ys_consent` are in the table under the exempt heading and not in the banner |
 
+Beyond cookies: every page used to fetch fonts from Google Fonts and icons (and, on yeste.studio,
+WaveSurfer) from unpkg, sending each visitor's IP to a third party before any choice (the LG
+München ruling of 2022-01-20 on Google Fonts made that a claim). Since 2026-09-20 fonts, icons
+and WaveSurfer are served from the sites themselves (`assets/fonts`, `assets/vendor`), so the
+only third parties a page contacts are GitHub (host) and, after consent, Google Analytics. Keep
+it that way: a new script or font from a CDN reopens the question.
+
 Privacy policy side (`politica-de-privacidad.md`): the data category (usage data tied to a random
 identifier, only with consent), the legal basis (consent, revocable), the processor (Google
 Ireland Limited) and the transfer to Google LLC under the EU-US Data Privacy Framework, the
