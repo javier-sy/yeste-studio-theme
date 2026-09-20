@@ -1,0 +1,19 @@
+{%- comment -%}
+Consent bar for Google Analytics. Shown by assets/js/consent.js only while the visitor has no
+valid choice; Reject and Accept are equals on purpose (AEPD guide: rejecting as easy as accepting).
+Shared with yeste-studio-website through scripts/sync-consent.sh: edit here, then run it.
+{%- endcomment -%}
+{%- if site.data.settings.google-analytics %}
+<div class="cookie-consent" id="cookie-consent" role="region" aria-label="Cookie consent" hidden>
+  <div class="cookie-consent__inner">
+    <p class="cookie-consent__text">
+      This site uses Google Analytics to count visits. Its cookies are set only if you accept.
+      <a href="{{ '/politica-de-cookies' | relative_url }}">Cookie policy</a>
+    </p>
+    <div class="cookie-consent__actions">
+      <button type="button" class="cookie-consent__button" data-consent="denied">Reject</button>
+      <button type="button" class="cookie-consent__button" data-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+{%- endif %}

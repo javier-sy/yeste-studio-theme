@@ -1,0 +1,35 @@
+{%- comment -%}
+The cookie policy's inventory, rendered from _data/cookies.yml so the policy and the browser
+never disagree. Used as {% include cookies-table.html %} inside politica-de-cookies.md.
+Shared with yeste-studio-website through scripts/sync-consent.sh: edit here, then run it.
+{%- endcomment -%}
+{%- assign exempt = site.data.cookies.entries | where: "exempt", true -%}
+{%- assign consented = site.data.cookies.entries | where: "exempt", false -%}
+{%- assign groups = "exempt,consented" | split: "," -%}
+{%- for group in groups %}
+{%- if group == "exempt" %}
+{%- assign rows = exempt %}
+<h3>Cookies técnicas, exentas de consentimiento</h3>
+<p>Sirven para que la web funcione y recuerde tus preferencias, incluida tu decisión sobre las demás cookies.</p>
+{%- else %}
+{%- assign rows = consented %}
+<h3>Cookies de análisis, solo con tu consentimiento</h3>
+<p>Solo se instalan si aceptas en el aviso de cookies. Puedes cambiar tu decisión cuando quieras desde el enlace «configurar cookies» del pie de página.</p>
+{%- endif %}
+<table class="cookies-table">
+  <thead>
+    <tr><th>Nombre</th><th>Tipo</th><th>Quién la instala</th><th>Finalidad</th><th>Duración</th></tr>
+  </thead>
+  <tbody>
+  {%- for c in rows %}
+    <tr>
+      <td><code>{{ c.name }}</code></td>
+      <td>{{ c.kind }}</td>
+      <td>{% if c.party_url %}<a href="{{ c.party_url }}" target="_blank" rel="noopener">{{ c.party }}</a>{% else %}{{ c.party }}{% endif %}</td>
+      <td>{{ c.purpose }}</td>
+      <td>{{ c.duration }}</td>
+    </tr>
+  {%- endfor %}
+  </tbody>
+</table>
+{%- endfor %}

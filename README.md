@@ -33,7 +33,10 @@ That is the entire integration. The consumer site can:
 | `_includes/brand/` | Inline SVGs in `currentColor`: the yeste.studio mark and lockup, and one product lockup per site (name, "by yeste.studio") |
 | `assets/brand/` | Favicon set (ico, svg, png) and home-screen icons |
 | `scripts/sync-brand.sh` | Regenerates `_includes/brand/`, `assets/brand/` and yeste-studio-website's copies from the brand masters in `../../../Resources` (the single source of truth). Never edit those outputs by hand |
-| `_includes/footer.html` | Site footer with social links + legal links |
+| `_includes/footer.html` | Site footer with social links + legal links; *configurar cookies* reopens the consent bar when the site has analytics |
+| `_includes/cookie-consent.html`, `assets/js/consent.js`, `_sass/3-modules/_cookie-consent.scss` | Consent bar for Google Analytics: nothing from Google loads until the visitor accepts. Active only when `_data/settings.yml` has `google-analytics: G-…`. See `docs/cookie-consent.md` |
+| `_data/cookies.yml`, `_includes/cookies-table.html` | The cookie register and the table it renders inside each site's `politica-de-cookies.md` |
+| `scripts/sync-consent.sh` | Copies the consent pieces to yeste-studio-website, which shares the banner without using the theme |
 | `_includes/main.scss` | SCSS entry point — imports the four `_sass` categories |
 | `_sass/0-settings/` | Variables, helpers, color scheme, mixins |
 | `_sass/1-tools/` | Reset, normalize, grid, syntax highlighting |
@@ -45,7 +48,7 @@ That is the entire integration. The consumer site can:
 
 - `_config.yml` with the site-specific config and the `remote_theme:` declaration above.
 - `index.html` (or `index.md`) with the site's actual content.
-- `_data/settings.yml` with the per-site navigation menu and contact info.
+- `_data/settings.yml` with the per-site navigation menu and contact info, and `google-analytics: G-…` once the site's legal pages describe analytics (the banner, the script and the footer link all hang on that key).
 - `CNAME` with the subdomain.
 - Site-specific images (product screenshots). The brand itself comes with the theme.
 - Product-specific layouts when needed (e.g. yeste-studio-website ships `_layouts/works.html` and `_layouts/music.html` locally).
@@ -56,7 +59,7 @@ That is the entire integration. The consumer site can:
 - [musalce-website](https://github.com/javier-sy/musalce-website) → `musalce.yeste.studio` (MusaLCE live coding suite)
 - [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code and opencode)
 
-[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh`.
+[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh` and the cookie-consent pieces through `scripts/sync-consent.sh`.
 
 Future: `pulso-website`, etc.
 

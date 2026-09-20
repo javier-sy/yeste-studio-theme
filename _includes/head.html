@@ -46,19 +46,11 @@
     }
   </script>
 
-  <!-- CookieControl -->
-  <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.10.min.js"></script>
-  <script>
-    var config = {
-      apiKey: '3abee8f9abcb4e26a00bb948dafeaae580f09b8c',
-      product: 'COMMUNITY',
-      optionalCookies: [],
-      position: 'LEFT',
-      theme: 'DARK'
-    };
-
-    CookieControl.load(config);
-  </script>
+{%- if site.data.settings.google-analytics %}
+  {% comment %}Google Analytics: loaded by consent.js only after the visitor accepts (docs/cookie-consent.md){% endcomment %}
+  <script>window.ysConsent = { measurementId: '{{ site.data.settings.google-analytics }}', version: {{ site.data.cookies.version }} };</script>
+  <script src="{{ '/assets/js/consent.js' | relative_url }}" defer></script>
+{%- endif %}
 
   <style>
   {% capture include_to_scssify %}

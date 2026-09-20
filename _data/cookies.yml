@@ -1,0 +1,37 @@
+# Every cookie and browser storage the site uses. Single source for the table in the cookie
+# policy (_includes/cookies-table.html) and for the consent banner (assets/js/consent.js), so
+# what the policy lists and what the browser gets never drift apart.
+#
+# `version` travels with the visitor's choice (see docs/cookie-consent.md). Bump it whenever a
+# non-exempt entry is added or changed: every visitor is then asked again.
+#
+# Texts are in Spanish because the legal pages are. `exempt: true` marks storage that needs no
+# consent under the AEPD guide (the visitor's own choice, or what remembering that choice needs).
+version: 1
+entries:
+  - name: ys_consent
+    kind: cookie
+    party: yeste.studio
+    purpose: Recuerda tu decisión sobre las cookies de análisis (aceptadas o rechazadas) y la versión de esta lista a la que se refiere.
+    duration: 24 meses
+    exempt: true
+  - name: theme
+    kind: almacenamiento local
+    party: yeste.studio
+    purpose: Recuerda si has elegido el modo oscuro.
+    duration: hasta que lo borres
+    exempt: true
+  - name: _ga
+    kind: cookie
+    party: Google
+    party_url: https://policies.google.com/technologies/cookies?hl=es
+    purpose: Google Analytics. Distingue a cada visitante con un identificador aleatorio para contar visitas y sesiones.
+    duration: 2 años
+    exempt: false
+  - name: _ga_*
+    kind: cookie
+    party: Google
+    party_url: https://policies.google.com/technologies/cookies?hl=es
+    purpose: Google Analytics. Mantiene el estado de la sesión de navegación para esta propiedad de análisis.
+    duration: 2 años
+    exempt: false
