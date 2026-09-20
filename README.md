@@ -29,7 +29,8 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 | `_layouts/page.html` | Standard content page layout |
 | `_includes/head.html` | `<head>` element with meta tags, brand favicons, CSS link; `noindex: true` in a page's front matter adds `<meta name="robots" content="noindex">` |
 | `_includes/header.html` | Site header with the product lockup + nav. The lockup is `_includes/brand/lockup-<title>.svg`, picked by the site's `title` in `_data/settings.yml` lowercased (`MusaDSL` → `lockup-musadsl.svg`); the nav reads `menu__settings.menu__items` |
-| `_includes/author.html` | "Author" section with the brand lockup |
+| `_includes/author.html` | "Author" section with the brand lockup; shows a license badge only when the site passes `license="…"` (no default: a license is never written in the theme) |
+| `_includes/license-notice.html` | The license notice of a product site: `product`, `base` (`gpl` or `proprietary`) and optional `faq` URL. The commercial-license sentence is the studio's standard one and is identical for every product |
 | `_includes/brand/` | Inline SVGs in `currentColor`: the yeste.studio mark and lockup, and one product lockup per site (name, "by yeste.studio") |
 | `assets/brand/` | Favicon set (ico, svg, png) and home-screen icons |
 | `scripts/sync-brand.sh` | Regenerates `_includes/brand/`, `assets/brand/` and yeste-studio-website's copies from the brand masters in `../../../Resources` (the single source of truth). Never edit those outputs by hand |

@@ -1,5 +1,5 @@
 {%- assign product = include.product -%}
-{%- assign license = include.license | default: "LGPL 3.0 License" -%}
+{%- assign license = include.license -%}
 {%- assign github = include.github | default: "https://github.com/javier-sy" -%}
 {%- assign github_label = include.github_label | default: "Source code on" -%}
 {%- assign family = include.family | default: false -%}
@@ -15,12 +15,14 @@
         exploring the intersection of sound, music, technology, and algorithmic composition.{% if family %}
         It is part of the <a href="https://musadsl.yeste.studio">MusaDSL</a> family of projects.{% endif %}
       </p>
+      {%- if license %}
       <p style="margin-top: 1.5rem;">
         <span class="license-badge">
           <ion-icon name="scale-outline"></ion-icon>
           {{ license }}
         </span>
       </p>
+      {%- endif %}
       <p style="margin-top: 1rem; font-size: 0.95rem;">
         {{ github_label }} <a href="{{ github }}" target="_blank" rel="noopener">GitHub</a>.
       </p>

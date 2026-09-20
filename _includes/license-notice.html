@@ -1,0 +1,35 @@
+{%- comment -%}
+The license notice every product site shows: what the license is, what it means for the
+visitor, and the studio's commercial-license offer, which is the same sentence for every
+product whatever its license.
+  product: the product name
+  base:    "gpl" (default) or "proprietary" (free of charge, not open source)
+  faq:     URL of the questions and answers, for sites that link to them instead of carrying them
+{%- endcomment -%}
+{%- assign product = include.product -%}
+{%- assign base = include.base | default: "gpl" -%}
+<div class="license-notice">
+{%- if base == "gpl" %}
+  <p>
+    <strong>{{ product }} is free software</strong>, licensed under the
+    <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GNU General Public License</a>,
+    version 3 or later (GPL-3.0-or-later).
+  </p>
+  <p>
+    <strong>What this means for you.</strong> Composing, performing and publishing music made with
+    {{ product }} carries no obligation: the music is yours. The GPL applies to software: if you
+    distribute a program that includes or is built on {{ product }}, that program must be released
+    under the GPL too, with its source.{% if include.faq %} See the <a href="{{ include.faq }}">questions and answers</a>.{% endif %}
+  </p>
+{%- else %}
+  <p>
+    <strong>{{ product }} is free of charge and not open source</strong>: it is licensed to be used,
+    not copied, changed or redistributed. What you make with it is yours, without condition.
+  </p>
+{%- endif %}
+  <p>
+    <strong>Commercial license.</strong> If you need {{ product }} under terms its license does not
+    cover - for instance, inside a closed product - yeste.studio offers a commercial license.
+    Write to <a href="mailto:javier@yeste.studio">javier@yeste.studio</a>.
+  </p>
+</div>
