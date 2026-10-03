@@ -41,11 +41,18 @@
   }
 }
 
+// Below this width the menu collapses into the menu button. Wider than $desktop: next to the
+// logo, the full menu needs the 1140px container, and between 1025 and 1140px the container is
+// 1000px, so the header would break into two lines.
+$menu-collapse: 1140px;
+
 /* Nav */
 .main-nav {
-  margin-left: auto;
+  // Takes the rest of the row and never pushes it onto a second line: the gaps shrink instead
+  flex: 1 1 0%;
+  min-width: 0;
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     position: fixed;
     top: 0;
     left: 0;
@@ -126,7 +133,7 @@
     display: none;
   }
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     display: block;
 
     align-items: center;
@@ -163,15 +170,15 @@
 .nav__list {
   display: flex;
   align-items: center;
+  // The whole width of the menu box: sized by its content, the list would count each
+  // .nav__gap at its minimum and leave the room on the right
+  flex: 1 1 auto;
+  min-width: 0;
 
   .nav__item {
     display: inline-block;
-    margin-right: 48px;
+    flex: none;
     margin-bottom: 0;
-
-    &:last-child {
-      margin-right: 0;
-    }
 
     .nav__link {
       position: relative;
@@ -230,7 +237,7 @@
     display: none;
   }
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     margin-left: auto;
     font-size: 26px;
 
@@ -251,7 +258,7 @@
   user-select: none;
   cursor: pointer;
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     padding: 20px 0;
   }
 }
@@ -294,7 +301,7 @@
   }
 
   // Desktop: hover behavior
-  @media only screen and (min-width: $desktop + 1) {
+  @media only screen and (min-width: $menu-collapse + 1) {
     &:hover {
       .submenu {
         opacity: 1;
@@ -309,7 +316,7 @@
   }
 
   // Mobile: click toggle behavior
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     &.submenu-open {
       .submenu {
         max-height: 300px;
@@ -329,7 +336,7 @@
   margin: 0;
 
   // Desktop styles
-  @media only screen and (min-width: $desktop + 1) {
+  @media only screen and (min-width: $menu-collapse + 1) {
     position: absolute;
     top: 100%;
     left: 0;
@@ -347,7 +354,7 @@
   }
 
   // Mobile styles
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
@@ -359,13 +366,13 @@
 .submenu__item {
   margin: 0;
 
-  @media only screen and (min-width: $desktop + 1) {
+  @media only screen and (min-width: $menu-collapse + 1) {
     &:not(:last-child) {
       border-bottom: 1px solid var(--background-color);
     }
   }
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     margin: 8px 0;
   }
 }
@@ -387,12 +394,43 @@
     color: var(--brand-color-text);
   }
 
-  @media only screen and (max-width: $desktop) {
+  @media only screen and (max-width: $menu-collapse) {
     padding: 8px 0;
     font-size: 18px;
 
     &:hover {
       background: transparent;
     }
+  }
+}
+
+/* Spacing of the top bar: logo, menu options, the rule that opens a group (`group: true` in
+   _data/settings.yml) and the theme toggle are kept apart by .nav__gap elements. Each is
+   $nav-gap-max wide when the row has room, and all of them shrink alike, down to $nav-gap-min,
+   when it does not; whatever room is left stays on the right. The folded menu has neither. */
+$nav-gap-max: 48px;
+$nav-gap-min: 20px;
+
+.nav__gap {
+  flex: 0 1 $nav-gap-max;
+  min-width: $nav-gap-min;
+}
+
+.nav__rule {
+  flex: none;
+  align-self: center;
+  width: 1px;
+  height: 16px;
+  background: color-mix(in srgb, currentColor 25%, transparent);
+}
+
+@media only screen and (max-width: $menu-collapse) {
+  .nav__gap,
+  .nav__rule {
+    display: none;
+  }
+
+  .nav__list .nav__item.nav__item--group {
+    margin-top: 24px;
   }
 }

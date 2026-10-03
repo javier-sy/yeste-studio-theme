@@ -18,8 +18,13 @@
             </div>
             <div class="nav__title">Menu</div>
             <ul class="nav__list list-reset">
+              <li class="nav__gap" aria-hidden="true"></li>
               {% for item in site.data.settings.menu__settings.menu__items %}
-                <li class="nav__item">
+                {%- if item.group %}
+                <li class="nav__rule" aria-hidden="true"></li>
+                <li class="nav__gap" aria-hidden="true"></li>
+                {%- endif %}
+                <li class="nav__item{% if item.group %} nav__item--group{% endif %}">
                   {% if item.external %}
                     <a href="{{ item.url }}" class="nav__link" target="_blank" rel="noopener">
                       {{ item.title }}
@@ -31,6 +36,7 @@
                     </a>
                   {% endif %}
                 </li>
+                <li class="nav__gap" aria-hidden="true"></li>
               {% endfor %}
               <li class="nav__item">
                 <div class="toggle-theme">
