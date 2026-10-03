@@ -39,9 +39,13 @@ if [ -n "$ENDPOINT" ]; then
 fi
 
 cd "$SITE"
-BUNDLE_GEMFILE="$SITE/Gemfile" bundle exec jekyll build --source "$OUT/src" --destination "$OUT/_site" 2>&1 \
-  | grep -v -e 'DEPRECATION WARNING' -e 'repetitive deprecation' -e 'Run in verbose mode' -e '^ *[│╷╵]' -e '^ *[0-9]* │' -e 'root stylesheet' -e '@import$' || true
-[ -f "$OUT/_site/index.html" ] || { echo "build failed" >&2; exit 1; }
+quiet() { grep -v -e 'DEPRECATION WARNING' -e 'repetitive deprecation' -e 'Run in verbose mode' \
+  -e '^ *[│╷╵]' -e '^ *[0-9]* │' -e 'root stylesheet' -e '@import$' "$OUT/build.log" || true; }
+if ! BUNDLE_GEMFILE="$SITE/Gemfile" bundle exec jekyll build --source "$OUT/src" --destination "$OUT/_site" \
+  > "$OUT/build.log" 2>&1; then
+  quiet; echo "build failed" >&2; exit 1
+fi
+quiet
 echo "built: $OUT/_site"
 if [ -n "$PORT" ]; then
   BUNDLE_GEMFILE="$SITE/Gemfile" exec bundle exec jekyll serve --source "$OUT/src" --destination "$OUT/_site" \

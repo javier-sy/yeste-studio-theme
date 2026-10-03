@@ -34,6 +34,10 @@ class Page(HTMLParser):
             norm.append(f'{name}="{value}"' if value is not None else name)
         self.tokens.append(f"<{tag} {' '.join(norm)}>".replace(" >", ">"))
 
+    def handle_startendtag(self, tag, attrs):
+        # <br> and <br /> are the same element
+        self.handle_starttag(tag, attrs)
+
     def handle_endtag(self, tag):
         if tag == "style":
             self._in_style = False; return
