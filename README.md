@@ -9,7 +9,7 @@ This repository holds the **presentation layer only** — layouts, partials, SCS
 In a consumer site's `_config.yml`:
 
 ```yaml
-remote_theme: javier-sy/yeste-studio-theme
+remote_theme: javier-sy/yeste-studio-theme@main
 
 plugins:
   - jekyll-remote-theme
@@ -55,7 +55,7 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 | `_sass/1-tools/` | Reset, normalize, grid, syntax highlighting |
 | `_sass/2-base/` | Base element styling |
 | `_sass/3-modules/` | One module per component: header, footer, sections, hero, content sections, components, feature blocks, link tables, getting started, video, author, tabs, notice, cookie consent, news |
-| `js/common.js`, `js/scripts.js` | Shared client-side JavaScript |
+| `assets/js/common.js`, `assets/js/scripts.js` | Shared client-side JavaScript |
 
 ## What's NOT in the theme (each site provides)
 
