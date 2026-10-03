@@ -31,3 +31,16 @@
     }
   }
 }
+
+/* A paragraph set apart from what comes before it (after a grid or a table) */
+.section__note {
+  margin-top: 1.5rem;
+}
+
+/* A sequence of commands shown as one line, e.g. a workflow loop */
+.flow-line {
+  font-family: monospace;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}

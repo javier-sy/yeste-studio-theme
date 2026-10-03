@@ -88,3 +88,18 @@
 .category__intro {
   margin-bottom: 1rem;
 }
+
+/* A card kept for reference: dimmed, with a badge after its title */
+.component-card--discontinued {
+  opacity: 0.55;
+}
+
+.component__badge {
+  font-size: 0.65em;
+  padding: 2px 8px;
+  background: #888;
+  color: white;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.4em;
+}

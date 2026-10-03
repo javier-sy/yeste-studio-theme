@@ -1,8 +1,9 @@
 {%- comment -%}
 Categories of component cards, from a list in the site's _data (`include.categories`). A
 category has a title, an optional `intro` (Markdown, one paragraph), and `cards` and/or a link
-`table` (link-table.html). A card has a title (HTML allowed), a `description` (Markdown, one
-paragraph), an optional `project` (key of _data/projects.yml) and `links` (type, url, label).
+`table` (link-table.html). A card has a title (HTML allowed), a `description` (Markdown, one or
+more paragraphs), an optional `project` (key of _data/projects.yml), `links` (type, url, label)
+and `discontinued: true` for a card kept for reference.
 {%- endcomment -%}
 {%- for category in include.categories %}
 <div class="component-category">
@@ -14,9 +15,9 @@ paragraph), an optional `project` (key of _data/projects.yml) and `links` (type,
   <div class="components-grid">
     {%- for card in category.cards %}
     {%- assign project = site.data.projects[card.project] %}
-    <div class="component-card">
-      <h4 class="component__title">{{ card.title }}</h4>
-      <p class="component__description">{{ card.description | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+    <div class="component-card{% if card.discontinued %} component-card--discontinued{% endif %}">
+      <h4 class="component__title">{{ card.title }}{% if card.discontinued %} <span class="component__badge">DISCONTINUED</span>{% endif %}</h4>
+      {{ card.description | markdownify | replace: "<p>", '<p class="component__description">' }}
       {%- if card.links %}
       <div class="component__links">
         {%- for link in card.links %}

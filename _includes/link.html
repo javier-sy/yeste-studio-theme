@@ -1,14 +1,22 @@
 {%- comment -%}
-One typed link (_data/link_types.yml), opening in a new tab.
+One typed link (_data/link_types.yml), opening in a new tab; a dash when there is none.
   type     key of link_types.yml
-  url      the address; without it, built from `project` as the type says
-  label    the text; the type's label otherwise
+  url      the address; otherwise the project's own link for this type, or one built from
+           the project as the type says
+  label    the text; otherwise the project's own label, or the type's
   project  an entry of the site's _data/projects.yml
 {%- endcomment -%}
 {%- assign link_type = site.data.link_types[include.type] -%}
-{%- assign link_url = include.url -%}
+{%- assign own = include.project[include.type] -%}
+{%- assign link_url = include.url | default: own.url -%}
 {%- unless link_url -%}
-  {%- assign link_key = include.project[link_type.from] -%}
-  {%- assign link_url = link_type.url | replace: "{}", link_key -%}
+  {%- if link_type.from -%}
+    {%- assign link_key = include.project[link_type.from] -%}
+    {%- if link_key %}{% assign link_url = link_type.url | replace: "{}", link_key %}{% endif -%}
+  {%- endif -%}
 {%- endunless -%}
-<a href="{{ link_url }}" target="_blank" rel="noopener"><ion-icon name="{{ link_type.icon }}"></ion-icon> {{ include.label | default: link_type.label }}</a>
+{%- if link_url -%}
+<a href="{{ link_url }}" target="_blank" rel="noopener"><ion-icon name="{{ link_type.icon }}"></ion-icon> {{ include.label | default: own.label | default: link_type.label }}</a>
+{%- else -%}
+—
+{%- endif -%}

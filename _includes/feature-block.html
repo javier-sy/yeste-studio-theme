@@ -1,0 +1,14 @@
+{%- comment -%}
+A feature block (_sass/3-modules/_feature-blocks.scss): an icon and a title over a body.
+  icon    an Ionicons name
+  title   HTML allowed
+  body    Markdown, usually captured just before the include; raw HTML and highlighted code
+          pass through
+Several in a row go inside <div class="feature-blocks">.
+{%- endcomment -%}
+<div class="feature-block">
+  <h3 class="feature-block__title"><ion-icon name="{{ include.icon }}"></ion-icon> {{ include.title }}</h3>
+  <div class="feature-block__body">
+    {{ include.body | markdownify }}
+  </div>
+</div>

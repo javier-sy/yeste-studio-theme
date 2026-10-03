@@ -1,0 +1,14 @@
+{%- comment -%}
+A YouTube video through youtube-nocookie, muted and autoplaying (_sass/3-modules/_video.scss).
+  id      the YouTube video id
+  title   the iframe's title
+{%- endcomment -%}
+<div class="video-frame">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/{{ include.id }}?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+    title="{{ include.title }}"
+    loading="lazy"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowfullscreen
+    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
