@@ -1,14 +1,11 @@
-/* Video: a 16:9 player (_includes/video.html). It is a screen recording: the text in it has to
-   be readable, so the player breaks out of the 800 px reading column. As wide as the viewport
-   allows, capped so that 16:9 still fits on screen without scrolling; the page never scrolls
-   sideways for it. */
+/* Video: a 16:9 player (_includes/video.html), as wide as the header's menu bar (the container
+   less the header's side padding). On a tall screen the height caps it too, so that 16:9 fits
+   without scrolling. */
 .video-frame {
   position: relative;
   aspect-ratio: 16 / 9;
-  width: min(96vw, 1400px);
+  width: calc(100% - 2 * #{$base-spacing-unit});
   margin: 1.5rem auto 0;
-  left: 50%;
-  transform: translateX(-50%);
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -27,6 +24,6 @@
    letting it take the width. */
 @media (min-height: 700px) {
   .video-frame {
-    width: min(96vw, 1400px, calc((100vh - 200px) * 16 / 9));
+    width: min(calc(100% - 2 * #{$base-spacing-unit}), calc((100vh - 200px) * 16 / 9));
   }
 }
