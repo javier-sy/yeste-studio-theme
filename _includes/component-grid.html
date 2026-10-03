@@ -1,0 +1,35 @@
+{%- comment -%}
+Categories of component cards, from a list in the site's _data (`include.categories`). A
+category has a title, an optional `intro` (Markdown, one paragraph), and `cards` and/or a link
+`table` (link-table.html). A card has a title (HTML allowed), a `description` (Markdown, one
+paragraph), an optional `project` (key of _data/projects.yml) and `links` (type, url, label).
+{%- endcomment -%}
+{%- for category in include.categories %}
+<div class="component-category">
+  <h3 class="category__title">{{ category.title }}</h3>
+  {%- if category.intro %}
+  <p class="category__intro">{{ category.intro | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+  {%- endif %}
+  {%- if category.cards %}
+  <div class="components-grid">
+    {%- for card in category.cards %}
+    {%- assign project = site.data.projects[card.project] %}
+    <div class="component-card">
+      <h4 class="component__title">{{ card.title }}</h4>
+      <p class="component__description">{{ card.description | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
+      {%- if card.links %}
+      <div class="component__links">
+        {%- for link in card.links %}
+        {% include link.html type=link.type url=link.url label=link.label project=project %}
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+  {%- if category.table %}
+  {% include link-table.html table=category.table %}
+  {%- endif %}
+</div>
+{%- endfor %}

@@ -1,0 +1,14 @@
+{%- comment -%}
+One typed link (_data/link_types.yml), opening in a new tab.
+  type     key of link_types.yml
+  url      the address; without it, built from `project` as the type says
+  label    the text; the type's label otherwise
+  project  an entry of the site's _data/projects.yml
+{%- endcomment -%}
+{%- assign link_type = site.data.link_types[include.type] -%}
+{%- assign link_url = include.url -%}
+{%- unless link_url -%}
+  {%- assign link_key = include.project[link_type.from] -%}
+  {%- assign link_url = link_type.url | replace: "{}", link_key -%}
+{%- endunless -%}
+<a href="{{ link_url }}" target="_blank" rel="noopener"><ion-icon name="{{ link_type.icon }}"></ion-icon> {{ include.label | default: link_type.label }}</a>

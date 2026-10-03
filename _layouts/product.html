@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{%- comment -%}
+A product site's home page (docs/product-sites.md): the hero from the page's front matter, the
+documents of _sections in their `order`, then News, the related products and the author
+(`author` in the front matter gives author.html its parameters).
+{%- endcomment -%}
+{% include hero.html %}
+{% assign sections = site.sections | sort: "order" %}
+{%- for section in sections %}
+{% include section.html section=section %}
+{%- endfor %}
+{{ content }}
+{% include news-block.html %}
+{% include related-products.html %}
+{% include author.html product=page.author.product family=page.author.family license=page.author.license github=page.author.github github_label=page.author.github_label %}

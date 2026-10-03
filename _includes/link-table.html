@@ -1,0 +1,25 @@
+{%- comment -%}
+A table of projects and their links, from the site's _data/tables.yml (`include.table` names
+the table) and _data/projects.yml (each row is a project key). A column shows a project field
+(`field`, in bold when `strong`) or a typed link (`link`, see link.html).
+{%- endcomment -%}
+{%- assign table = site.data.tables[include.table] -%}
+<table class="libraries-table">
+  <thead>
+    <tr>
+      {%- for column in table.columns %}
+      <th>{{ column.header }}</th>
+      {%- endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {%- for key in table.rows %}
+    {%- assign project = site.data.projects[key] %}
+    <tr>
+      {%- for column in table.columns %}
+      <td>{% if column.link %}{% include link.html type=column.link project=project %}{% elsif column.strong %}<strong>{{ project[column.field] }}</strong>{% else %}{{ project[column.field] }}{% endif %}</td>
+      {%- endfor %}
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>

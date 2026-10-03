@@ -19,25 +19,23 @@
             <div class="nav__title">Menu</div>
             <ul class="nav__list list-reset">
               <li class="nav__gap" aria-hidden="true"></li>
-              {% for item in site.data.settings.menu__settings.menu__items %}
-                {%- if item.group %}
-                <li class="nav__rule" aria-hidden="true"></li>
-                <li class="nav__gap" aria-hidden="true"></li>
+              {%- if site.sections.size > 0 %}
+              {%- comment %}Product site: Home, every section with a `menu` label, News and Author{% endcomment %}
+              {% include nav-item.html title="Home" url="/#home" %}
+              {%- assign sections = site.sections | sort: "order" %}
+              {%- for section in sections %}
+                {%- if section.menu %}
+                {%- capture section_url %}/#{{ section.anchor }}{% endcapture %}
+              {% include nav-item.html title=section.menu url=section_url %}
                 {%- endif %}
-                <li class="nav__item{% if item.group %} nav__item--group{% endif %}">
-                  {% if item.external %}
-                    <a href="{{ item.url }}" class="nav__link" target="_blank" rel="noopener">
-                      {{ item.title }}
-                      <ion-icon name="open-outline" style="font-size: 0.8em; margin-left: 4px;"></ion-icon>
-                    </a>
-                  {% else %}
-                    <a href="{{ item.url }}" class="nav__link{% if page.url == item.url %} nav__link--current{% endif %}">
-                      {{ item.title }}
-                    </a>
-                  {% endif %}
-                </li>
-                <li class="nav__gap" aria-hidden="true"></li>
-              {% endfor %}
+              {%- endfor %}
+              {% include nav-item.html title="News" url="/#news" group=true %}
+              {% include nav-item.html title="Author" url="https://yeste.studio" external=true %}
+              {%- else %}
+              {%- for item in site.data.settings.menu__settings.menu__items %}
+              {% include nav-item.html title=item.title url=item.url external=item.external group=item.group %}
+              {%- endfor %}
+              {%- endif %}
               <li class="nav__item">
                 <div class="toggle-theme">
                   <div class="toggle-moon" title="Enable dark mode"><ion-icon name="moon"></ion-icon></div>

@@ -1,0 +1,21 @@
+{%- comment -%}
+One item of the header menu and the gap after it; `group` puts a rule and a gap before it.
+  title, url   external: opens in a new tab with an icon   group: starts a new group
+{%- endcomment -%}
+{%- if include.group %}
+<li class="nav__rule" aria-hidden="true"></li>
+<li class="nav__gap" aria-hidden="true"></li>
+{%- endif %}
+<li class="nav__item{% if include.group %} nav__item--group{% endif %}">
+  {%- if include.external %}
+  <a href="{{ include.url }}" class="nav__link" target="_blank" rel="noopener">
+    {{ include.title }}
+    <ion-icon name="open-outline" style="font-size: 0.8em; margin-left: 4px;"></ion-icon>
+  </a>
+  {%- else %}
+  <a href="{{ include.url }}" class="nav__link{% if page.url == include.url %} nav__link--current{% endif %}">
+    {{ include.title }}
+  </a>
+  {%- endif %}
+</li>
+<li class="nav__gap" aria-hidden="true"></li>

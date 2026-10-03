@@ -1,0 +1,20 @@
+# Typed links of component cards and link tables (_includes/link.html): the icon, the default
+# label and, when the link gives no url, how to build it from the project it belongs to (`from`
+# names the project field that fills {}: repo is owner/name on GitHub, gem the RubyGems name).
+github:
+  icon: logo-github
+  label: GitHub
+  from: repo
+  url: "https://github.com/{}"
+readme:
+  icon: document-text-outline
+  label: README
+  from: repo
+  url: "https://github.com/{}#readme"
+api:
+  icon: book-outline
+  label: API
+  from: gem
+  url: "https://rubydoc.info/gems/{}"
+doc:
+  icon: document-text-outline

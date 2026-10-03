@@ -1,0 +1,26 @@
+{%- comment -%}
+The opening block of a product page, from `hero` in the page's front matter: title, subtitle
+(HTML allowed), `meta` items (icon, text, optional url) and an optional image with its alt.
+{%- endcomment -%}
+{%- assign hero = page.hero -%}
+<section id="home" class="hero-section">
+  <div class="container">
+    <h1 class="hero__title">{{ hero.title }}</h1>
+    <p class="hero__subtitle">{{ hero.subtitle }}</p>
+    {%- if hero.meta %}
+    <div class="hero__meta">
+      {%- for item in hero.meta %}
+      <div class="meta-item">
+        <ion-icon name="{{ item.icon }}"></ion-icon>
+        <span>{% if item.url %}<a href="{{ item.url }}">{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}</span>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+    {%- if hero.image %}
+    <div class="hero__image">
+      <img src="{{ hero.image }}" alt="{{ hero.image_alt }}">
+    </div>
+    {%- endif %}
+  </div>
+</section>

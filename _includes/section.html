@@ -1,0 +1,24 @@
+{%- comment -%}
+One section of a product page, from a document of the site's _sections collection:
+  anchor, title   the id of the section (its #anchor) and the heading
+  class           extra classes of the <section>
+  content_class   extra classes of the content box
+  (Jekyll reserves some document fields - id, url, path, slug, date, excerpt, content, output,
+  collection, relative_path, ext, next, previous, draft, categories, tags - so they can't be used
+  in front matter here.)
+  wrap: false     no content box (.section__content, 800px wide): for full-width content
+                  such as component grids
+{%- endcomment -%}
+{%- assign section = include.section -%}
+<section id="{{ section.anchor }}" class="content-section{% if section.class %} {{ section.class }}{% endif %}">
+  <div class="container">
+    <h2 class="section__title">{{ section.title }}</h2>
+    {%- if section.wrap == false %}
+    {{ section.content }}
+    {%- else %}
+    <div class="section__content{% if section.content_class %} {{ section.content_class }}{% endif %}">
+      {{ section.content }}
+    </div>
+    {%- endif %}
+  </div>
+</section>
