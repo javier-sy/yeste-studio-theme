@@ -38,6 +38,10 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 | `_includes/cookie-consent.html`, `assets/js/consent.js`, `_sass/3-modules/_cookie-consent.scss` | Consent bar for Google Analytics: nothing from Google loads until the visitor accepts. Active only when `_data/settings.yml` has `google-analytics: G-…`. See `docs/cookie-consent.md` |
 | `_data/cookies.yml`, `_includes/cookies-table.html` | The cookie register and the table it renders inside each site's `politica-de-cookies.md` |
 | `scripts/sync-consent.sh` | Copies the consent pieces to yeste-studio-website, which shares the banner without using the theme |
+| `_data/topics.yml`, `_data/newsletter.yml` | The news topics and the settings of *yeste.studio news*, the newsletter. See `docs/news.md` |
+| `_includes/news-block.html`, `_includes/news-list.html` | A product site's News section: the latest headlines of its `news_topic`, from yeste.studio's `news.json` fetched at build time |
+| `_includes/newsletter-form.html`, `_includes/newsletter-privacy.md`, `_sass/3-modules/_news.scss` | The signup form (a plain `POST`, no script) and the privacy section; both appear only when `newsletter.yml` has an `endpoint` |
+| `scripts/sync-news.sh` | Copies the news and newsletter pieces to yeste-studio-website, which publishes the news |
 | `assets/fonts/`, `_sass/0-settings/_fonts.scss` | Self-hosted DM Sans and Josefin Sans (OFL), the same subsets Google Fonts served; no page contacts Google for them |
 | `assets/vendor/ionicons/` | Ionicons 7.1.0 (MIT), served from the site instead of a CDN. The `<ion-icon>` component fetches `svg/<name>.svg` next to its script, so the whole folder ships |
 | `scripts/sync-vendor.sh` | Copies fonts, the fonts partial and Ionicons to yeste-studio-website |
@@ -53,6 +57,7 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 - `_config.yml` with the site-specific config and the `remote_theme:` declaration above.
 - `index.html` (or `index.md`) with the site's actual content.
 - `_data/settings.yml` with the per-site navigation menu and contact info, and `google-analytics: G-…` once the site's legal pages describe analytics (the banner, the script and the footer link all hang on that key).
+- `news_topic: <key>` in `_data/settings.yml`, `{% include news-block.html %}` in its home page, and the workflow step that fetches `_data/news.json` (`docs/news.md`).
 - `CNAME` with the subdomain.
 - Site-specific images (product screenshots). The brand itself comes with the theme.
 - Product-specific layouts when needed (e.g. yeste-studio-website ships `_layouts/works.html` and `_layouts/music.html` locally).
@@ -63,7 +68,7 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 - [musalce-website](https://github.com/javier-sy/musalce-website) → `musalce.yeste.studio` (MusaLCE live coding suite)
 - [nota-website](https://github.com/javier-sy/nota-website) → `nota.yeste.studio` (Nota plugin for Claude Code and opencode)
 
-[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh`, the cookie-consent pieces through `scripts/sync-consent.sh` and the self-hosted fonts and icons through `scripts/sync-vendor.sh`.
+[yeste-studio-website](https://github.com/javier-sy/yeste-studio-website) (`yeste.studio`) does **not** use the theme: it has its own layouts and styles, and shares the brand assets through `scripts/sync-brand.sh`, the cookie-consent pieces through `scripts/sync-consent.sh`, the self-hosted fonts and icons through `scripts/sync-vendor.sh`, and the news and newsletter pieces through `scripts/sync-news.sh`.
 
 Future: `pulso-website`, etc.
 

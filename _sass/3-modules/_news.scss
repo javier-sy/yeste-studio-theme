@@ -1,0 +1,96 @@
+/* News list and newsletter form: shared by yeste.studio and the product sites
+   (scripts/sync-news.sh copies this file to yeste-studio-website) */
+.news-list {
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.news-list__item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--background-alt-color);
+
+  @media only screen and (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+}
+
+.news-list__date {
+  font-family: $heading-font-family;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.9;
+  color: var(--heading-font-color);
+}
+
+.news-list__title {
+  font-weight: 700;
+}
+
+.news-list__summary,
+.news-list__topics {
+  margin: 4px 0 0;
+  font-size: 16px;
+}
+
+.news-list__topics {
+  opacity: 0.7;
+
+  a + a::before {
+    content: "· ";
+  }
+}
+
+.news-block__more {
+  text-align: center;
+}
+
+.newsletter-form {
+  margin: 40px 0;
+  padding: 24px;
+  border-radius: 8px;
+  background: var(--background-alt-color);
+
+  .content-section:nth-child(even) & {
+    background: var(--background-color);
+  }
+}
+
+.newsletter-form__pitch {
+  margin-bottom: 16px;
+}
+
+.newsletter-form__row {
+  display: flex;
+  gap: 12px;
+
+  @media only screen and (max-width: $mobile) {
+    flex-direction: column;
+  }
+}
+
+.newsletter-form__email {
+  flex: 1;
+  min-width: 0;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--text-color);
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-radius: 8px;
+  background: var(--background-color);
+}
+
+.newsletter-form__button {
+  padding: 16px 32px;
+}
+
+.newsletter-form__fine {
+  margin: 12px 0 0;
+  font-size: 14px;
+  opacity: 0.7;
+}

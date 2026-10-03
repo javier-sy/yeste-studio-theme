@@ -1,0 +1,20 @@
+{%- comment -%}
+Signup form for yeste.studio news (_data/newsletter.yml). A plain POST to the newsletter service:
+no script and nothing from a third party loads with the page. Renders nothing while `endpoint` is
+empty. `utm_source` records which site the signup came from. A page with two forms gives the
+second one its own `id` (include parameter), so each label keeps pointing at its own field.
+{%- endcomment -%}
+{%- assign newsletter = site.data.newsletter -%}
+{%- assign field_id = include.id | default: "newsletter-email" -%}
+{%- if newsletter.endpoint %}
+<form class="newsletter-form" action="{{ newsletter.endpoint }}" method="post">
+  <p class="newsletter-form__pitch"><strong>{{ newsletter.name }}</strong> - {{ newsletter.pitch }}</p>
+  <input type="hidden" name="utm_source" value="{{ site.url | remove: 'https://' | remove: 'http://' | remove: '/' }}">
+  <div class="newsletter-form__row">
+    <label class="screen-reader-text" for="{{ field_id }}">Email address</label>
+    <input id="{{ field_id }}" class="newsletter-form__email" type="email" name="{{ newsletter.email_field }}" placeholder="Email address" autocomplete="email" required>
+    <button class="button button--primary newsletter-form__button" type="submit">{{ newsletter.button }}</button>
+  </div>
+  <p class="newsletter-form__fine">{{ newsletter.confirm }} <a href="/politica-de-privacidad#newsletter">Privacy policy</a>.</p>
+</form>
+{%- endif %}

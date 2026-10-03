@@ -1,0 +1,21 @@
+# yeste.studio news: the one newsletter of yeste.studio, for every site. The theme reads this file and
+# scripts/sync-news.sh copies it to yeste-studio-website, so the list lives in one place.
+#
+# `endpoint` empty: no signup form and no newsletter section in the privacy policies. Setting it
+# turns both on in every site (after sync-news.sh and a rebuild). Moving the list to another
+# service means changing `endpoint`, `email_field` and `processor`, nothing else.
+name: yeste.studio news
+endpoint:            # https://buttondown.com/api/emails/embed-subscribe/<username>
+email_field: email
+pitch: A few letters a year from yeste.studio.
+button: Subscribe
+confirm: You will get an email to confirm.
+
+# For the privacy policies (Spanish, like the legal pages). Check `tracking` in the service's
+# settings when the account opens: false means the letters measure neither opens nor clicks.
+tracking: false
+processor:
+  name: Buttondown, LLC
+  address: "406 W Franklin St. #201, Richmond, VA 23221, Estados Unidos"
+  privacy: https://buttondown.com/legal/privacy
+  transfer: las cláusulas contractuales tipo aprobadas por la Comisión Europea (Decisión de Ejecución (UE) 2021/914)
