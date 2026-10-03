@@ -75,8 +75,11 @@ Beyond cookies: every page used to fetch fonts from Google Fonts and icons (and,
 WaveSurfer) from unpkg, sending each visitor's IP to a third party before any choice (the LG
 München ruling of 2022-01-20 on Google Fonts made that a claim). Since 2026-09-20 fonts, icons
 and WaveSurfer are served from the sites themselves (`assets/fonts`, `assets/vendor`), so the
-only third parties a page contacts are GitHub (host) and, after consent, Google Analytics. Keep
-it that way: a new script or font from a CDN reopens the question.
+only third parties a page contacts are GitHub (host) and, after consent, Google Analytics. One
+accepted exception: the demo video on nota.yeste.studio's home page (YouTube in its
+privacy-enhanced mode, `_includes/video.html`) loads with the page, and Nota's privacy and cookie
+policies say so. Keep it that way: a new script, font or embed from a third party reopens the
+question, and a site that embeds a video must say so in its policies.
 
 Privacy policy side (`politica-de-privacidad.md`): the data category (usage data tied to a random
 identifier, only with consent), the legal basis (consent, revocable), the processor (Google
