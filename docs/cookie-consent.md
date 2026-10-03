@@ -110,4 +110,7 @@ published site:
   the requirements table against it.
 - yeste-studio-website: after touching the banner, the table include, the script or the styles,
   run `scripts/sync-consent.sh` and commit both repos. Its register is its own
-  (`yeste-studio-website/_data/cookies.yml`, one extra entry) and is edited by hand.
+  (`yeste-studio-website/_data/cookies.yml`, one extra entry) and is edited by hand, but its
+  `version` must match the theme's: the consent cookie is shared, and a site that reads another
+  version shows the banner again and overwrites the cookie. `sync-consent.sh` copies it; a
+  version bump is made in the theme and synced.
