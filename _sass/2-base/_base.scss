@@ -235,3 +235,16 @@ table td {
 .lightense-backdrop {
   background-color: var(--background-alt-color) !important;
 }
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Anchor offset for fixed header */
+:target::before {
+  content: "";
+  display: block;
+  height: 80px;
+  margin-top: -80px;
+}

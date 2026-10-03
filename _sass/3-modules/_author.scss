@@ -1,0 +1,45 @@
+/* Author Section */
+.author-section {
+  text-align: center;
+
+  .author__info {
+    max-width: 600px;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    a {
+      @include text-link;
+      font-weight: 500;
+    }
+
+    .author__brand {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--heading-font-color);
+      text-decoration: none;
+    }
+
+    .brand-lockup {
+      display: block;
+      height: 56px;
+      width: auto;
+    }
+  }
+}
+
+/* License Badge */
+.license-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-color);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

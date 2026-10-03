@@ -1,0 +1,55 @@
+/* Getting Started */
+.getting-started {
+  .requirements {
+    background: var(--background-alt-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .install-steps {
+    h3 {
+      padding-bottom: 0.4rem;
+      margin-top: 2rem;
+      border-bottom: 2px solid var(--brand-color);
+    }
+
+    code {
+      background: var(--background-alt-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      background: var(--background-alt-color);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+
+      code {
+        background: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* Numbered install steps (h4) need to read as steps, not as one wall */
+.install-steps h4 { margin-top: 56px; }
+.install-steps h3 + h4 { margin-top: 24px; }

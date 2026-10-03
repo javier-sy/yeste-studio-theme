@@ -1,0 +1,33 @@
+/* Content Sections */
+.content-section {
+  padding: 60px 0;
+
+  &:nth-child(even) {
+    background-color: var(--background-alt-color);
+  }
+
+  .section__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: transparent;
+    padding: 0;
+  }
+
+  .section__content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+
+    p a,
+    li a,
+    td a {
+      @include text-link;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+}
