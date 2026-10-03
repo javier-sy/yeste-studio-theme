@@ -17,9 +17,9 @@ plugins:
 
 That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll', '~> 4.3'`, as in musadsl-website's Gemfile), because the theme ships `_data/` that Jekyll 3 does not read. The `github-pages` gem pins Jekyll 3.10 and must not be used; the sites build with their own GitHub Actions workflow anyway. The consumer site can:
 
-- Use the theme's `default` and `page` layouts out of the box (declare `layout: default` or `layout: page` in front matter).
+- Build its home page with the `product` layout: a hero from the front matter, the documents of its `_sections` collection and the common tail (News, related products, author). See `docs/product-sites.md`.
+- Use the theme's `default` and `page` layouts for any other page (the legal pages use `page`).
 - Override any theme layout, include, sass file or JS by providing the same file at the same path locally — Jekyll's lookup prefers the local file over the theme.
-- Add its own navigation by providing `_data/settings.yml` with `menu__settings.menu__items` (the theme's `_includes/header.html` reads from this).
 
 ## What's in the theme
 
@@ -27,8 +27,13 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 |---|---|
 | `_layouts/default.html` | Top-level page wrapper (head + header + content + footer) |
 | `_layouts/page.html` | Standard content page layout |
+| `_layouts/product.html` | A product site's home page: hero, sections, News, related products, author (`docs/product-sites.md`) |
+| `_includes/hero.html`, `_includes/section.html` | The opening block (from `hero` in the front matter) and the wrapper of each section |
+| `_includes/component-grid.html`, `_includes/link-table.html`, `_includes/link.html`, `_data/link_types.yml` | Component cards and link tables from a site's `_data`; typed links (GitHub, README, API…) built from a project's repository and gem |
+| `_includes/feature-block.html`, `_includes/video.html` | A block with icon and title over a Markdown body; a youtube-nocookie player |
+| `scripts/preview.sh`, `scripts/compare-html.py` | Build a product site with this theme as it is on disk (with headlines and a newsletter endpoint if wanted), and compare two builds of a page |
 | `_includes/head.html` | `<head>` element with meta tags, brand favicons, CSS link; `noindex: true` in a page's front matter adds `<meta name="robots" content="noindex">` |
-| `_includes/header.html` | Site header with the product lockup + nav. The lockup is `_includes/brand/lockup-<title>.svg`, picked by the site's `title` in `_data/settings.yml` lowercased (`MusaDSL` → `lockup-musadsl.svg`); the nav reads `menu__settings.menu__items`, and an item with `group: true` starts a new group, set apart from the one before |
+| `_includes/header.html` | Site header with the product lockup + nav. The lockup is `_includes/brand/lockup-<title>.svg`, picked by the site's `title` in `_data/settings.yml` lowercased (`MusaDSL` → `lockup-musadsl.svg`); the menu is Home, every section with a `menu` label in its order, then News and Author as a group of their own (`_includes/nav-item.html`) |
 | `_includes/author.html` | "Author" section with the brand lockup; shows a license badge only when the site passes `license="…"` (no default: a license is never written in the theme) |
 | `_includes/license-notice.html` | The license notice of a product site: `product`, `base` (`gpl` or `proprietary`) and optional `faq` URL. The commercial-license sentence is the studio's standard one and is identical for every product |
 | `_includes/brand/` | Inline SVGs in `currentColor`: the yeste.studio mark and lockup, and one product lockup per site (name, "by yeste.studio") |
@@ -49,15 +54,15 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 | `_sass/0-settings/` | Variables, helpers, color scheme, mixins |
 | `_sass/1-tools/` | Reset, normalize, grid, syntax highlighting |
 | `_sass/2-base/` | Base element styling |
-| `_sass/3-modules/` | Section, footer, header, scroll-button-top modules |
+| `_sass/3-modules/` | One module per component: header, footer, sections, hero, content sections, components, feature blocks, link tables, getting started, video, author, tabs, notice, cookie consent, news |
 | `js/common.js`, `js/scripts.js` | Shared client-side JavaScript |
 
 ## What's NOT in the theme (each site provides)
 
 - `_config.yml` with the site-specific config and the `remote_theme:` declaration above.
-- `index.html` (or `index.md`) with the site's actual content.
-- `_data/settings.yml` with the per-site navigation menu and contact info, and `google-analytics: G-…` once the site's legal pages describe analytics (the banner, the script and the footer link all hang on that key).
-- `news_topic: <key>` in `_data/settings.yml`, `{% include news-block.html %}` in its home page, and the workflow step that fetches `_data/news.json` (`docs/news.md`).
+- `index.md` with `layout: product` and its front matter (`hero`, `author`); `_sections/` with the page's prose; `_data/projects.yml`, `tables.yml` and the card lists its sections use. See `docs/product-sites.md`.
+- `_data/settings.yml` with the site's title, description and contact info, and `google-analytics: G-…` once the site's legal pages describe analytics (the banner, the script and the footer link all hang on that key).
+- `news_topic: <key>` in `_data/settings.yml` and the workflow step that fetches `_data/news.json` (`docs/news.md`); the product layout shows the News section.
 - `CNAME` with the subdomain.
 - Site-specific images (product screenshots). The brand itself comes with the theme.
 - Product-specific layouts when needed (e.g. yeste-studio-website ships `_layouts/works.html` and `_layouts/music.html` locally).
@@ -74,4 +79,4 @@ Future: `pulso-website`, etc.
 
 ## Development
 
-There is no `Gemfile` here because consumers don't need to install the theme — GitHub Pages resolves `remote_theme:` directly. To test theme changes locally, point a consumer site at this folder via `theme: yeste-studio-theme` and a `Gemfile` line like `gem 'yeste-studio-theme', path: '../yeste-studio-theme'`.
+There is no `Gemfile` here because consumers don't need to install the theme — the sites resolve `remote_theme:` when they build. A consumer built from its own folder therefore uses the **published** theme; to see changes before pushing them, `scripts/preview.sh <site> [--serve PORT]` builds the site with this folder on top. Push the theme before a site that needs its new pieces.
