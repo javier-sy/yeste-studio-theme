@@ -13,6 +13,8 @@ _data/tables.yml         link tables
 _data/components.yml     card grids (any name: the section passes it to the include)
 _data/settings.yml       title, description, news_topic, contact, google-analytics
 _config.yml              the sections collection (output: false) and kramdown's settings
+news.md, feed.xml        the site's news page and feed (layouts product-news and product-feed;
+                         the news come from yeste.studio, see news.md in this folder)
 ```
 
 ## The home page

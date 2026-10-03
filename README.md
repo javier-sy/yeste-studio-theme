@@ -44,7 +44,7 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 | `_data/cookies.yml`, `_includes/cookies-table.html` | The cookie register and the table it renders inside each site's `politica-de-cookies.md` |
 | `scripts/sync-consent.sh` | Copies the consent pieces to yeste-studio-website, which shares the banner without using the theme |
 | `_data/topics.yml`, `_data/newsletter.yml` | The news topics and the settings of *yeste.studio news*, the newsletter. See `docs/news.md` |
-| `_includes/news-block.html`, `_includes/news-list.html` | A product site's News section: the latest headlines of its `news_topic`, from yeste.studio's `news.json` fetched at build time |
+| `_includes/news-block.html`, `_includes/news-list.html`, `_layouts/product-news.html`, `_layouts/product-feed.xml` | A product site's News section, news page and feed: the news of its `news_topic`, from yeste.studio's `news.json` fetched at build time |
 | `_includes/newsletter-form.html`, `_includes/newsletter-privacy.md`, `_sass/3-modules/_news.scss` | The signup form (a plain `POST`, no script) and the privacy section; both appear only when `newsletter.yml` has an `endpoint` |
 | `scripts/sync-news.sh` | Copies the news and newsletter pieces to yeste-studio-website, which publishes the news |
 | `assets/fonts/`, `_sass/0-settings/_fonts.scss` | Self-hosted DM Sans and Josefin Sans (OFL), the same subsets Google Fonts served; no page contacts Google for them |
@@ -62,7 +62,7 @@ That is the entire integration, with one requirement: **Jekyll 4** (`gem 'jekyll
 - `_config.yml` with the site-specific config and the `remote_theme:` declaration above.
 - `index.md` with `layout: product` and its front matter (`hero`, `author`); `_sections/` with the page's prose; `_data/projects.yml`, `tables.yml` and the card lists its sections use. See `docs/product-sites.md`.
 - `_data/settings.yml` with the site's title, description and contact info, and `google-analytics: G-…` once the site's legal pages describe analytics (the banner, the script and the footer link all hang on that key).
-- `news_topic: <key>` in `_data/settings.yml` and the workflow step that fetches `_data/news.json` (`docs/news.md`); the product layout shows the News section.
+- `news_topic: <key>` in `_data/settings.yml`, `news.md` and `feed.xml` at its root, and the workflow step that fetches `_data/news.json` (`docs/news.md`); the product layout shows the News section.
 - `CNAME` with the subdomain.
 - Site-specific images (product screenshots). The brand itself comes with the theme.
 - Product-specific layouts when needed (e.g. yeste-studio-website ships `_layouts/works.html` and `_layouts/music.html` locally).

@@ -94,3 +94,18 @@
   font-size: 14px;
   opacity: 0.7;
 }
+
+/* A product site's news page: each item in full */
+.news-item {
+  margin: 64px 0;
+
+  .news-item__title {
+    margin-bottom: 4px;
+  }
+
+  .news-item__date {
+    margin-bottom: 16px;
+    font-size: 15px;
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,31 @@
+{%- comment -%}
+RSS 2.0 of a product site's news (/feed.xml), from _data/news.json: the items of the site's
+topic, linking to their place in the site's news page; the guid is the item's page on yeste.studio.
+{%- endcomment -%}
+{%- assign key = site.data.settings.news_topic -%}
+{%- assign topic = site.data.topics | where: "key", key | first -%}
+{%- assign items = site.data.news | where_exp: "item", "item.topics contains key" -%}
+{%- capture news_page %}{{ "/news/" | absolute_url }}{% endcapture -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ topic.label | xml_escape }} news</title>
+    <description>{{ site.data.settings.description | xml_escape }}</description>
+    <link>{{ news_page }}</link>
+    <atom:link href="{{ page.url | absolute_url }}" rel="self" type="application/rss+xml"/>
+    <language>es</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {%- for item in items limit: 20 %}
+    <item>
+      <title>{{ item.title | xml_escape }}</title>
+      <description>{{ item.content | xml_escape }}</description>
+      <pubDate>{{ item.date | date_to_rfc822 }}</pubDate>
+      <link>{{ news_page }}#{{ item.slug }}</link>
+      <guid isPermaLink="true">{{ item.url }}</guid>
+      {%- for topic_key in item.topics %}
+      <category>{{ topic_key }}</category>
+      {%- endfor %}
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

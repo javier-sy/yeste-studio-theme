@@ -1,6 +1,6 @@
 {%- comment -%}
 The News section of a product site: the latest headlines of the site's topic (`news_topic` in
-_data/settings.yml), links to the topic's page and feed on yeste.studio, and the newsletter form.
+_data/settings.yml), links to the site's own news page and feed, and the newsletter form.
 The headlines come from _data/news.json, which the Pages workflow fetches from
 https://yeste.studio/news.json before building (docs/news.md); without it the section keeps the
 links and the form.
@@ -13,11 +13,11 @@ links and the form.
     <h2 class="section__title">News</h2>
     <div class="section__content">
       {%- if items.size > 0 %}
-      {% include news-list.html items=items limit=3 %}
+      {% include news-list.html items=items limit=3 local=true %}
       {%- endif %}
       <p class="news-block__more">
-        <a href="https://yeste.studio/news/{{ key }}/">All {{ topic.label }} news</a> ·
-        <a href="https://yeste.studio/news/{{ key }}/feed.xml">RSS</a>
+        <a href="/news/">All {{ topic.label }} news</a> ·
+        <a href="/feed.xml">RSS</a>
       </p>
       {% include newsletter-form.html %}
     </div>

@@ -6,13 +6,14 @@
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.settings.title }}{% endif %}</title>
   <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.data.settings.description }}{% endif %}'>
 
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  {%- comment %}A product site's news page repeats yeste.studio's: the original is the topic page there{% endcomment %}
+  <link rel="canonical" href="{% if page.layout == 'product-news' %}https://yeste.studio/news/{{ site.data.settings.news_topic }}/{% else %}{{ page.url | replace:'index.html','' | absolute_url }}{% endif %}">
   {%- if page.noindex %}
   <meta name="robots" content="noindex">
   {%- endif %}
   {%- if site.data.settings.news_topic %}
   {%- assign news_topic = site.data.topics | where: "key", site.data.settings.news_topic | first %}
-  <link rel="alternate" type="application/rss+xml" title="{{ news_topic.label | escape }} news - yeste.studio" href="https://yeste.studio/news/{{ news_topic.key }}/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ news_topic.label | escape }} news" href="{{ '/feed.xml' | absolute_url }}">
   {%- endif %}
 
   <!-- Brand icons: refreshed by scripts/sync-brand.sh from the brand masters -->
