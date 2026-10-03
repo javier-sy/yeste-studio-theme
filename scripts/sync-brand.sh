@@ -77,4 +77,9 @@ mkdir -p "$SITE/_includes/brand"
 inline_svg "$SRC/svg/yeste-lockup--dark-on-transparent.svg" "$SITE/_includes/brand/lockup.svg" brand-lockup "yeste.studio"
 icon_set "$SITE"
 
-echo "brand assets refreshed from $SRC into the theme and yeste-studio-website"
+# --- product sites: favicon.ico at the root, where clients that skip the <link> look for it
+for product in musadsl musalce nota; do
+  [ -d "$THEME/../$product-website" ] && cp "$THEME/assets/brand/favicon.ico" "$THEME/../$product-website/favicon.ico"
+done
+
+echo "brand assets refreshed from $SRC into the theme, yeste-studio-website and the product sites' favicon.ico"
