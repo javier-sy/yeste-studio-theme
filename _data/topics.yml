@@ -1,7 +1,8 @@
 # The closed list of news topics. Every news item in yeste-studio-website/_news names one or more
 # of these keys, and the build fails on any other. yeste.studio publishes /news/<key>/ and its feed
 # for each; a product site shows the headlines of the key it sets as `news_topic` in its
-# _data/settings.yml. A new site adds its topic here (scripts/sync-news.sh copies this file to
+# _data/settings.yml. A new site adds its topic here, and the newsletter's `pitch`
+# (_data/newsletter.yml) may then name it (scripts/sync-news.sh copies this file to
 # yeste-studio-website). Labels are interface text, in English.
 - key: studio
   label: yeste.studio

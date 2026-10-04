@@ -1,22 +1,39 @@
 {%- comment -%}
-Signup form for yeste.studio news (_data/newsletter.yml). A plain POST to the newsletter service:
-no script and nothing from a third party loads with the page. Renders nothing while `endpoint` is
-empty. `utm_source` records which site the signup came from. The service's pages open in a new
-tab, so the visitor's page stays where it was. `compact` makes it a narrow box, for a product's
-hero; `id` gives a second form on a page its own field id. A page with two forms gives the
-second one its own `id` (include parameter), so each label keeps pointing at its own field.
+Signup form for yeste.studio news (_data/newsletter.yml), the same on every site. A plain POST to
+the newsletter service, opening in a new tab so the visitor's page stays where it was: no script,
+nothing from a third party loads with the page. Renders nothing while `endpoint` is empty.
+  placement   where the form sits on the page: hero, top or footer (every page has one in the
+              footer, so pages don't end with another). It
+              gives the field its id, so two forms on a page don't share one, and goes to the
+              service as utm_medium; utm_source is the site and utm_campaign the page, so the
+              list shows where each signup came from.
+  compact     a box as wide as a product's hero image
+  footer      laid out for the footer: text and field side by side on wide screens
+Once there is a letter, the form links to the latest one: yeste.studio reads its _letters, a
+product site the letters in news.json.
 {%- endcomment -%}
 {%- assign newsletter = site.data.newsletter -%}
-{%- assign field_id = include.id | default: "newsletter-email" -%}
+{%- assign placement = include.placement | default: "page" -%}
+{%- if site.letters.size > 0 -%}
+  {%- assign latest_letter = site.letters | sort: "date" | last -%}
+{%- else -%}
+  {%- assign latest_letter = site.data.news | where: "letter", true | first -%}
+{%- endif -%}
 {%- if newsletter.endpoint %}
-<form class="newsletter-form{% if include.compact %} newsletter-form--compact{% endif %}" action="{{ newsletter.endpoint }}" method="post" target="_blank" rel="noopener">
-  <p class="newsletter-form__pitch"><strong>{{ newsletter.name }}</strong> - {{ newsletter.pitch }}</p>
+<form class="newsletter-form{% if include.compact %} newsletter-form--compact{% endif %}{% if include.footer %} newsletter-form--footer{% endif %}" action="{{ newsletter.endpoint }}" method="post" target="_blank" rel="noopener">
+  <p class="newsletter-form__title"><ion-icon name="mail-outline"></ion-icon> {{ newsletter.title }}</p>
+  <p class="newsletter-form__pitch">{{ newsletter.pitch }}</p>
   <input type="hidden" name="utm_source" value="{{ site.url | remove: 'https://' | remove: 'http://' | remove: '/' }}">
+  <input type="hidden" name="utm_medium" value="{{ placement }}">
+  <input type="hidden" name="utm_campaign" value="{{ page.url }}">
   <div class="newsletter-form__row">
-    <label class="screen-reader-text" for="{{ field_id }}">Email address</label>
-    <input id="{{ field_id }}" class="newsletter-form__email" type="email" name="{{ newsletter.email_field }}" placeholder="Email address" autocomplete="email" required>
+    <label class="screen-reader-text" for="newsletter-email-{{ placement }}">Email address</label>
+    <input id="newsletter-email-{{ placement }}" class="newsletter-form__email" type="email" name="{{ newsletter.email_field }}" placeholder="Email address" autocomplete="email" required>
     <button class="button button--primary newsletter-form__button" type="submit">{{ newsletter.button }}</button>
   </div>
-  <p class="newsletter-form__fine">{{ newsletter.confirm }} <a href="/politica-de-privacidad#newsletter">Privacy policy</a>.</p>
+  <p class="newsletter-form__fine">
+    {{ newsletter.fine }} · <a href="/politica-de-privacidad#newsletter">Privacy policy</a>
+    {%- if latest_letter %} · <a href="{{ latest_letter.url }}">Read the latest letter</a>{% endif %}
+  </p>
 </form>
 {%- endif %}

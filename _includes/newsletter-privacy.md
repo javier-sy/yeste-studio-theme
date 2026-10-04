@@ -24,7 +24,7 @@ Descripción de las categorías de suscriptores y de las categorías de datos pe
 - Categorías de datos personales:
     - La dirección de correo electrónico.
     - La fecha y la dirección IP de la suscripción y de su confirmación, que acreditan el
-    consentimiento, y la web desde la que te suscribes.
+    consentimiento, y la web y el lugar de la página desde los que te suscribes.
     {%- unless newsletter.tracking %}
     - Los envíos no miden aperturas ni clics.
     {%- endunless %}

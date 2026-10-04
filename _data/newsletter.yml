@@ -5,11 +5,16 @@
 # turns both on in every site (after sync-news.sh and a rebuild). Moving the list to another
 # service means changing `endpoint`, `email_field` and `processor`, nothing else.
 name: yeste.studio news
+# The heading of the signup form; `name` names the newsletter elsewhere (privacy, letters)
+title: "Subscribe to the yeste.studio newsletter:"
 endpoint: https://buttondown.com/api/emails/embed-subscribe/yeste.studio
 email_field: email
-pitch: A few letters a year from yeste.studio.
+# The same text on every site, naming every field the letters cover (the news topics, in
+# _data/topics.yml); the closing words leave room for what comes next and for letters of
+# reflection. A new product can join the list when it is published.
+pitch: Works, shows and talks, what's new in MusaDSL, MusaLCE and Nota, and whatever else yeste.studio is working on - in a few letters a year.
 button: Subscribe
-confirm: Opens in a new tab; you will get an email to confirm.
+fine: Confirm by email · Unsubscribe anytime · Opens in a new tab
 
 # For the privacy policies (Spanish, like the legal pages). Check `tracking` in the service's
 # settings when the account opens: false means the letters measure neither opens nor clicks.

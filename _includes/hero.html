@@ -18,7 +18,7 @@ optional image with its alt.
       {%- endfor %}
     </div>
     {%- endif %}
-    {% include newsletter-form.html id="newsletter-email-hero" compact=true %}
+    {% include newsletter-form.html placement="hero" compact=true %}
     {%- if hero.image %}
     <div class="hero__image">
       <img src="{{ hero.image }}" alt="{{ hero.image_alt }}">

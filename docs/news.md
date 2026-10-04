@@ -21,7 +21,7 @@ yeste.studio publishes its news and those of its tools once, and every site show
 | Newsletter settings | `_data/newsletter.yml` | Name, form endpoint, texts, and the service's data for the privacy policies |
 | Headline list | `_includes/news-list.html` | yeste.studio's news lists |
 | News page and feed | `_layouts/product-news.html`, `_layouts/product-feed.xml` | Product sites only: `news.md` (`layout: product-news`, `permalink: /news/`) and `feed.xml` (`layout: product-feed`) at the site's root; `news_topic` in `_data/settings.yml` picks the topic |
-| Signup form | `_includes/newsletter-form.html` | A plain `POST` to the service, opening in a new tab: no script, nothing loaded from a third party. `compact` for a product's hero |
+| Signup form | `_includes/newsletter-form.html` | A plain `POST` to the service, opening in a new tab: no script, nothing loaded from a third party. Every page has one in its footer; a product's hero (`compact`), the news pages and yeste.studio's home add one near the top |
 | Privacy section | `_includes/newsletter-privacy.md` | Included in every site's `politica-de-privacidad.md` |
 | Styles | `_sass/3-modules/_news.scss` | |
 
@@ -46,7 +46,13 @@ service changes the same three keys.
 ```
 
 `content` is the item's HTML with its links made absolute, because the product sites show it on
-another domain; `slug` is its anchor in their news pages.
+another domain; `slug` is its anchor in their news pages. The published letters follow, as
+`{"letter": true, "title", "date", "url"}` with no topics: the news lists leave them out, and the
+signup form links to the latest.
+
+Each signup carries where it came from: `utm_source` (the site), `utm_medium` (the form's place:
+`hero`, `top` or `footer`) and `utm_campaign` (the page). The newsletter service keeps them with
+the subscriber.
 
 A product site's Pages workflow fetches it into `_data/news.json` before building (the file is in
 its `.gitignore`). If the fetch fails the site builds with an empty news page.

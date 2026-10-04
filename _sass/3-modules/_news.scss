@@ -52,11 +52,27 @@
 .newsletter-form {
   margin: 40px 0;
   padding: 24px;
+  border-left: 4px solid var(--brand-color);
   border-radius: 8px;
   background: var(--background-alt-color);
 
   .content-section:nth-child(even) & {
     background: var(--background-color);
+  }
+}
+
+.newsletter-form__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 6px;
+  font-family: $heading-font-family;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--heading-font-color);
+
+  ion-icon {
+    color: var(--brand-color-text);
   }
 }
 
@@ -140,5 +156,63 @@
 
   .newsletter-form__fine {
     font-size: 13px;
+  }
+}
+
+/* The newsletter form in the footer of every page: smaller and lower than in the content, with
+   title and pitch beside the field on wide screens and the fine print under both */
+.newsletter-form--footer {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 16px 20px;
+
+  .newsletter-form__title {
+    font-size: 16px;
+  }
+
+  .newsletter-form__pitch {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .newsletter-form__email {
+    font-size: 15px;
+  }
+
+  .newsletter-form__button {
+    padding: 12px 24px;
+  }
+
+  .newsletter-form__fine {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  @media only screen and (min-width: $tablet + 1) {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    column-gap: 32px;
+    align-items: center;
+
+    .newsletter-form__title {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .newsletter-form__pitch {
+      grid-column: 1;
+      grid-row: 2;
+      margin-bottom: 0;
+    }
+
+    .newsletter-form__row {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .newsletter-form__fine {
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
   }
 }
