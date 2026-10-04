@@ -1,10 +1,9 @@
 {%- comment -%}
-A list of news headlines, newest first. Shared by yeste.studio (its _news collection) and the
-product sites (yeste.studio's news.json, fetched at build time); scripts/sync-news.sh copies it.
+A list of news headlines, newest first, used by yeste.studio (its _news collection);
+scripts/sync-news.sh copies it there.
   items    news items: title, date, url, summary, topics, lang (Spanish unless `lang` says otherwise)
   limit    how many to show (all when absent)
   topics   true to show each item's topics, linking to their pages on yeste.studio
-  local    true to link each item to this site's news page (/news/#slug) instead of yeste.studio
 {%- endcomment -%}
 {%- if site.url != "https://yeste.studio" %}{% assign news_base = "https://yeste.studio" %}{% endif -%}
 {%- assign limit = include.limit | default: include.items.size -%}
@@ -13,8 +12,7 @@ product sites (yeste.studio's news.json, fetched at build time); scripts/sync-ne
   <li class="news-list__item" lang="{{ item.lang | default: 'es' }}">
     <time class="news-list__date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%d-%m-%Y" }}</time>
     <div class="news-list__body">
-      {%- if include.local %}{% capture item_href %}/news/#{{ item.slug }}{% endcapture %}{% else %}{% assign item_href = item.url %}{% endif %}
-      <a class="news-list__title" href="{{ item_href }}">{{ item.title }}</a>
+      <a class="news-list__title" href="{{ item.url }}">{{ item.title }}</a>
       {%- if item.summary %}
       <p class="news-list__summary">{{ item.summary }}</p>
       {%- endif %}

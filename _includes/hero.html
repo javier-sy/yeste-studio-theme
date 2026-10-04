@@ -1,6 +1,7 @@
 {%- comment -%}
 The opening block of a product page, from `hero` in the page's front matter: title, subtitle
-(HTML allowed), `meta` items (icon, text, optional url) and an optional image with its alt.
+(HTML allowed), `meta` items (icon, text, optional url), the newsletter form, compact, and an
+optional image with its alt.
 {%- endcomment -%}
 {%- assign hero = page.hero -%}
 <section id="home" class="hero-section">
@@ -17,6 +18,7 @@ The opening block of a product page, from `hero` in the page's front matter: tit
       {%- endfor %}
     </div>
     {%- endif %}
+    {% include newsletter-form.html id="newsletter-email-hero" compact=true %}
     {%- if hero.image %}
     <div class="hero__image">
       <img src="{{ hero.image }}" alt="{{ hero.image_alt }}">

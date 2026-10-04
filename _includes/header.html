@@ -19,7 +19,7 @@
             <div class="nav__title">Menu</div>
             <ul class="nav__list list-reset">
               <li class="nav__gap" aria-hidden="true"></li>
-              {%- comment %}Home, every section with a `menu` label (in their order), News and Author{% endcomment %}
+              {%- comment %}Home, every section with a `menu` label (in their order), the news page and Author{% endcomment %}
               {% include nav-item.html title="Home" url="/#home" %}
               {%- assign sections = site.sections | sort: "order" %}
               {%- for section in sections %}
@@ -28,7 +28,7 @@
               {% include nav-item.html title=section.menu url=section_url %}
                 {%- endif %}
               {%- endfor %}
-              {% include nav-item.html title="News" url="/#news" group=true %}
+              {% include nav-item.html title="News" url="/news/" group=true %}
               {% include nav-item.html title="Author" url="https://yeste.studio" external=true %}
               <li class="nav__item">
                 <div class="toggle-theme">

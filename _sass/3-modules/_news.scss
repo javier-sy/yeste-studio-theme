@@ -95,17 +95,50 @@
   opacity: 0.7;
 }
 
-/* A product site's news page: each item in full */
+/* A product site's news page: each item in full, laid out like .news-list (date on the left) */
 .news-item {
-  margin: 64px 0;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--background-alt-color);
 
-  .news-item__title {
-    margin-bottom: 4px;
+  @media only screen and (max-width: $mobile) {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+}
+
+.news-item__date {
+  font-family: $heading-font-family;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.9;
+  color: var(--heading-font-color);
+}
+
+.news-item__title {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* The newsletter form in a product's hero: as wide as the hero image (.hero__image) */
+.newsletter-form--compact {
+  max-width: 800px;
+  margin: 2rem auto 0;
+  padding: 16px 20px;
+  text-align: left;
+
+  .newsletter-form__pitch {
+    margin-bottom: 10px;
+    font-size: 16px;
   }
 
-  .news-item__date {
-    margin-bottom: 16px;
-    font-size: 15px;
-    opacity: 0.7;
+  .newsletter-form__button {
+    padding: 12px 24px;
+  }
+
+  .newsletter-form__fine {
+    font-size: 13px;
   }
 }

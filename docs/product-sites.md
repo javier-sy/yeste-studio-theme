@@ -1,9 +1,9 @@
 # Product sites
 
-A product site (musadsl, musalce, nota.yeste.studio) is one page: a hero, sections in order, and a
-common tail (News, the related products and the author). The theme assembles it with the
-`product` layout; the site writes its prose in Markdown and its lists of components and links as
-data.
+A product site (musadsl, musalce, nota.yeste.studio) is one page - a hero with the newsletter form,
+sections in order, and a common tail (the related products and the author) - plus its news page
+(`/news/`). The theme assembles the home page with the `product` layout; the site writes its prose
+in Markdown and its lists of components and links as data.
 
 ```
 index.md                 layout: product, title, description, hero, author
@@ -58,7 +58,7 @@ The body is Markdown. Raw HTML blocks pass through unchanged (the install tabs o
 and `<div … markdown="1">` lets Markdown in again. A section made only of includes (a card grid)
 is an `.html` file, so that kramdown does not touch the markup.
 
-The menu is built from the sections: Home, every section with a `menu` label, then News and Author
+The menu is built from the sections: Home, every section with a `menu` label, then the news page and Author
 as a group of their own.
 
 ## Cards, tables and links
