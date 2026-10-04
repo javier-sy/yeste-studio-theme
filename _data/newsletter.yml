@@ -9,7 +9,7 @@ endpoint: https://buttondown.com/api/emails/embed-subscribe/yeste.studio
 email_field: email
 pitch: A few letters a year from yeste.studio.
 button: Subscribe
-confirm: You will get an email to confirm.
+confirm: Opens in a new tab; you will get an email to confirm.
 
 # For the privacy policies (Spanish, like the legal pages). Check `tracking` in the service's
 # settings when the account opens: false means the letters measure neither opens nor clicks.

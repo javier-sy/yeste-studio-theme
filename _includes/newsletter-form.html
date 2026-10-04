@@ -1,13 +1,14 @@
 {%- comment -%}
 Signup form for yeste.studio news (_data/newsletter.yml). A plain POST to the newsletter service:
 no script and nothing from a third party loads with the page. Renders nothing while `endpoint` is
-empty. `utm_source` records which site the signup came from. A page with two forms gives the
+empty. `utm_source` records which site the signup came from. The service's pages open in a new
+tab, so the visitor's page stays where it was. A page with two forms gives the
 second one its own `id` (include parameter), so each label keeps pointing at its own field.
 {%- endcomment -%}
 {%- assign newsletter = site.data.newsletter -%}
 {%- assign field_id = include.id | default: "newsletter-email" -%}
 {%- if newsletter.endpoint %}
-<form class="newsletter-form" action="{{ newsletter.endpoint }}" method="post">
+<form class="newsletter-form" action="{{ newsletter.endpoint }}" method="post" target="_blank" rel="noopener">
   <p class="newsletter-form__pitch"><strong>{{ newsletter.name }}</strong> - {{ newsletter.pitch }}</p>
   <input type="hidden" name="utm_source" value="{{ site.url | remove: 'https://' | remove: 'http://' | remove: '/' }}">
   <div class="newsletter-form__row">
