@@ -5,7 +5,7 @@
 # turns both on in every site (after sync-news.sh and a rebuild). Moving the list to another
 # service means changing `endpoint`, `email_field` and `processor`, nothing else.
 name: yeste.studio news
-endpoint:            # https://buttondown.com/api/emails/embed-subscribe/<username>
+endpoint: https://buttondown.com/api/emails/embed-subscribe/yeste.studio
 email_field: email
 pitch: A few letters a year from yeste.studio.
 button: Subscribe
