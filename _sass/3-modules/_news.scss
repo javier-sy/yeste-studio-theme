@@ -111,6 +111,21 @@
   opacity: 0.7;
 }
 
+/* The fine print's links carry the sites' link style themselves: the form also sits in the
+   footer, where no container styles its links (same rules as the theme's text-link mixin,
+   which yeste-studio-website does not have) */
+.newsletter-form__fine a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--brand-color);
+  text-underline-offset: 0.15em;
+
+  &:hover {
+    color: var(--link-color-hover);
+  }
+}
+
 /* A product site's news page: each item in full, laid out like .news-list (date on the left) */
 .news-item {
   display: grid;
